@@ -1,7 +1,3 @@
-import { CustomButton } from '@/components/CustomButton';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 
 const Hero = () => {
     return (
@@ -77,7 +73,7 @@ const Hero = () => {
                     </text>
                 </svg>
 
-                <div className="container relative mx-auto h-full px-4">
+                {/* <div className="container relative mx-auto h-full px-4">
                     <div className="xs:pt-28 flex h-full w-full pt-28 lg:top-1/4">
                         <div className="max-w-screen relative flex w-full flex-col gap-2 px-8 lg:px-0">
                             <div className="absolute top-[5%] space-y-4 lg:left-[3%]">
@@ -115,7 +111,9 @@ const Hero = () => {
                     <div className="custom2:max-w-xl custom1:max-w-4xl absolute bottom-0 left-0 right-0 mx-auto flex h-[calc(100vh-20%)] max-h-[90vh] w-full max-w-2xl items-end justify-center sm:max-w-lg md:max-w-2xl lg:max-w-2xl xl:max-w-2xl 2xl:max-w-5xl">
                         <Image src="/hero.png" alt="hero" className="xs:scale-150 xs:-translate-y-20 h-fit w-auto" width={972} height={830} />
                     </div>
-                </div>
+                </div> */}
+
+               
 
                 <div className="absolute bottom-4 left-4 flex w-fit items-center gap-2 rounded-md bg-teal-500/10 bg-gradient-to-r p-2 md:bottom-10 md:right-10 lg:left-auto lg:right-4">
                     <div className="rounded-md px-2 py-1 text-xs font-bold text-teal-500 md:text-lg">#1</div>

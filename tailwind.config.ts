@@ -59,6 +59,10 @@ export default {
                 // custom2: { min: '1024px', max: '1280px' },
                 xs: { min: '380px', max: '430px' },
             },
+            fontFamily: {
+                sans: ['Helvetica Neue', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                'helvetica': ['Helvetica Neue', 'sans-serif'],
+            },
         },
     },
     plugins: [tailwindcssAnimate],
