@@ -50,7 +50,7 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white" id="team">
+    <section className="py-16  lg:h-[100vh] lg:flex justify-center items-center bg-gradient-to-b from-gray-50 to-white" id="team">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-gray-900 mb-4">Our Team</h2>
