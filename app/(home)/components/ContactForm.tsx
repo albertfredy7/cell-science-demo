@@ -44,7 +44,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <div className="flex flex-col md:flex-row justify-between items-start gap-8">
                 <div className="w-full md:w-2/3 mb-8 md:mb-0">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight mb-1">Get in touch with us.</h2>
