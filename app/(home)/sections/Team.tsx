@@ -57,7 +57,7 @@ export default function Team() {
           <p className="text-xl sm:text-2xl md:text-2xl font-light text-gray-700 max-w-3xl mx-auto">
             CellScience Biotech Inc. collaborate with Scientists, institutions,
             academic organisations, reproductive specialist, experts and
-            Tech leaders who believe to make a difference in women's
+            Tech leaders who believe to make a difference in women&apos;s
             health and reproductive science.
           </p>
         </div>
