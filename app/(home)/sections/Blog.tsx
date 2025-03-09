@@ -33,9 +33,9 @@ const blogPosts = [
 const Blog = () => {
 
   return (
-    <div className="py-12 max-w-7xl mx-auto px-2 sm:px-2 lg:px-6">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-center">Explore Insights in Our Blog</h2>
-      <p className="text-xl sm:text-2xl md:text-2xl mb-12 font-normal text-center">Explore, learn, and get inspired today.</p>
+    <div className="py-12 max-w-7xl mx-auto px-6 sm:px-6 lg:px-6">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal  text-center">Explore Insights in Our Blog</h2>
+      <p className="text-xl sm:text-2xl md:text-2xl mb-12 font-normal text-gray-800 text-center">Explore, learn, and get inspired today.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.slice(0, 3).map((post, index) => (
           <Card key={index} className="overflow-hidden bg-transparent p-0 rounded-lg shadow-none border-none transition-transform transform hover:scale-105">
