@@ -1,130 +1,198 @@
+"use client";
+
+import { BlurIn } from '@/components/Blur-in';
+import { CustomButton } from '@/components/CustomButton';
+import { LetterSwapPingPong } from '@/components/letter-swap';
+import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { useEffect } from 'react';
+import GradientText from '../components/GradientText';
 
 const Hero = () => {
+    useEffect(() => {
+        function startMarquee(id: string, pathId: string, content: string, speed: number) {
+            const textPathElement = document.getElementById(id);
+            const pathElement = document.getElementById(pathId);
+
+            if (textPathElement instanceof SVGTextPathElement && pathElement instanceof SVGPathElement) {
+                const pathLength = pathElement.getTotalLength();
+                const repeatedContent = content.repeat(2);
+                textPathElement.innerHTML = repeatedContent;
+
+                let offset = 0;
+
+                function animateText() {
+                    offset -= speed;
+                    if (offset <= -pathLength / 2) {
+                        offset = 0;
+                    }
+                    if (textPathElement) {
+                        textPathElement.setAttribute('startOffset', `${offset}px`);
+                    }
+                    requestAnimationFrame(animateText);
+                }
+
+                animateText();
+            }
+        }
+
+        const textContent = 'Explore Now &nbsp;&nbsp;&nbsp;&nbsp;'.repeat(50);
+        startMarquee('custom-marquee-text', 'custom-text-path', textContent, 1);
+        startMarquee('mobile-marquee-text', 'mobile-text-path', textContent, 1);
+    }, []);
+
     return (
-        <>
-            <section className="relative h-screen overflow-hidden">
-                {/* ribbon 1 */}
-                <svg width="777" height="192" viewBox="0 0 777 192" fill="none" className="absolute bottom-0 left-0 z-0 sm:-left-[25%] lg:-left-2">
-                    <defs>
-                        <path id="curve1" d="M7 33.6776C22.823 24.9424 80.0525 8.78236 182.386 14.0235C310.303 20.5749 478.896 109.327 521.665 135.224C643.086 208.745 707.045 166.282 776 171.257" />
-                        {/* Filter for white glow effect */}
-                        <filter id="glow1" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="2" result="blur" />
-                            <feFlood floodColor="white" result="color" />
-                            <feComposite in="color" in2="blur" operator="in" />
-                            <feComposite in="SourceGraphic" />
-                        </filter>
-                    </defs>
+        <section className="relative  min-h-svh overflow-hidden lg:pt-20 flex flex-col">
+            <div className="xs:pt-28 flex-1 w-full pt-20 lg:pt-28 h-full  mx-auto flex flex-col">
+                <div className=' flex-1 lg:grid grid-cols-2 z-20 '>
+                    <BlurIn delay={0.4} duration={1.6}>
+                        <div className='h-full p-10 2xl:ps-36 lg:text-left text-center md:pt-28 lg:pt-0 space-y-2'>
+                            <span className='text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl max-w-md inline-block'>
 
-                    {/* White ribbon background */}
-                    <path
-                        d="M7 33.6776C22.823 24.9424 80.0525 8.78236 182.386 14.0235C310.303 20.5749 478.896 109.327 521.665 135.224C643.086 208.745 707.045 166.282 776 171.257"
-                        stroke="#f0f0f0"
-                        opacity={0.5}
-                        strokeWidth="25"
-                        filter="url(#glow1)"
-                    />
+                                <h1 className='w-full max-w-xs md:max-w-lg xl:max-w-md text-2xl sm:text-2xl md:text-3xl lg:text-4xl'>You are unique and your body is made of trillions of</h1>
+                                <GradientText className='w-full text-2xl sm:text-2xl md:text-3xl lg:text-4xl'>intelligent cells.</GradientText>
+                            </span>
+                            <div className="pt-4 flex justify-center lg:justify-start">
+                                <CustomButton className='font-normal tracking-wide'> <LetterSwapPingPong label={"KNOW MORE"} staggerFrom="first" reverse={true} className="font-medium" /></CustomButton>
+                            </div>
+                        </div>
+                    </BlurIn>
+                    <div className='h-full w-full hidden lg:flex items-end justify-end  2xl:pb-28'>
+                        <div className='2xl:pb-8 lg:pb-16 w-full'>
+                            <BlurIn delay={1.8} duration={1} >
+                                <div className='space-y-2 float-end pt-6 2xl:pt-10 2xl:pr-20'>
 
-                    {/* Text along the path */}
-                    <text className="text-xs font-semibold tracking-wide" dy={5}>
-                        <textPath href="#curve1" startOffset="0%" className="animate-marquee fill-[#3a3a3a]">
-                            {Array(18)
-                                .fill('Explore Now!')
-                                .map((text, index) => (
-                                    <tspan key={index}>{text} &nbsp;</tspan>
-                                ))}
-                        </textPath>
-                    </text>
-                </svg>
-                {/* ribbon 2  */}
-                <svg
-                    width="1000"
-                    height="400"
-                    viewBox="0 0 600 376"
-                    fill="none"
-                    className="custom1:-right-[15%] custom1:bottom-[10%] absolute z-0 hidden sm:right-[10%] md:-right-[70%] md:bottom-[10%] md:block lg:-right-[40%] lg:bottom-[15%] xl:-right-[20%] xl:bottom-[20%] 2xl:-right-[2%] 2xl:bottom-[15%] custom:-right-[22%] custom:bottom-[10%]"
-                >
-                    <defs>
-                        <path id="curve2" d="M11 430C21.2609 414.172 42.2851 369.972 44.2954 319.792C46.8083 257.067 21.0515 79.4442 173.08 38.4093C294.702 5.58129 620.369 11.4434 768 18.478" />
-                        <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="2" result="blur" />
-                            <feFlood floodColor="white" result="color" />
-                            <feComposite in="color" in2="blur" operator="in" />
-                            <feComposite in="SourceGraphic" />
-                        </filter>
-                    </defs>
-
-                    <path
-                        d="M11 430C21.2609 414.172 42.2851 369.972 44.2954 319.792C46.8083 257.067 21.0515 79.4442 173.08 38.4093C294.702 5.58129 620.369 11.4434 768 18.478"
-                        stroke="#f0f0f0"
-                        strokeWidth="25"
-                        opacity={0.5}
-                        filter="url(#glow2)"
-                    />
-
-                    <text className="text-xs font-semibold tracking-wide" dy={5}>
-                        <textPath href="#curve2" startOffset="0%" className="fill-[#3a3a3a]">
-                            {Array(18)
-                                .fill('Explore Now!')
-                                .map((text, index) => (
-                                    <tspan key={index}>{text} &nbsp;</tspan>
-                                ))}
-                        </textPath>
-                    </text>
-                </svg>
-
-                {/* <div className="container relative mx-auto h-full px-4">
-                    <div className="xs:pt-28 flex h-full w-full pt-28 lg:top-1/4">
-                        <div className="max-w-screen relative flex w-full flex-col gap-2 px-8 lg:px-0">
-                            <div className="absolute top-[5%] space-y-4 lg:left-[3%]">
-                                <h1 className="custom1:text-5xl text-4xl tracking-tight md:text-5xl xl:text-4xl 2xl:text-5xl">
-                                    Timeless Living,
-                                    <br />
-                                    Backed by Science
-                                </h1>
-                                <p className="max-w-xs text-sm leading-tight text-gray-600 sm:max-w-sm sm:text-sm md:text-base">
-                                    CellScience Biotech, a cell health company that targets cellular health through mitochondrial health and enhances longevity.
-                                </p>
-                                <div>
-                                    <Button size={'sm'} className="hidden items-center gap-2 rounded-md bg-black text-xs font-bold text-white lg:flex">
-                                        KNOW MORE{' '}
+                                    <GradientText>
+                                        <p className='text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl  font-normal max-w-sm w-full'>
+                                            Defying the time & Defying the clock
+                                        </p>
+                                    </GradientText>
+                                    <p className='text-base lg:text-lg text-gray-600 max-w-xs'>
+                                        We at CellScience Biotech, rediscover the beauty within the cells and envision the cellular health through Integrated Intelligent Biology, encourage the body to embrace the health Span.
+                                    </p>
+                                    <Button size={'sm'} className=" items-center gap-2 rounded-md bg-black text-xs hover:bg-black font-bold text-white ">
+                                        <LetterSwapPingPong label={"Know More"} staggerFrom="first" reverse={true} className="font-medium" />
                                         <span className="text-sm">
                                             <ArrowRight />
                                         </span>
                                     </Button>
-                                    <CustomButton className="lg:hidden">KNOW MORE</CustomButton>
                                 </div>
-                            </div>
-                            <div className="absolute right-[5%] top-[55%] hidden lg:top-[45%] lg:block xl:top-[48%] 2xl:top-[50%]">
-                                <div className="max-w-52 2xl:max-w-xs">
-                                    <p className="text-lg tracking-tight md:text-2xl xl:text-2xl 2xl:text-3xl">
-                                        Even though we are unique, we all aspire to be our <span className="text-teal-500">best.</span>
-                                    </p>
-                                    <div className="hidden pt-4 lg:block">
-                                        <CustomButton>KNOW MORE</CustomButton>
-                                    </div>
-                                </div>
-                            </div>
+                            </BlurIn>
                         </div>
                     </div>
-
-                    <div className="custom2:max-w-xl custom1:max-w-4xl absolute bottom-0 left-0 right-0 mx-auto flex h-[calc(100vh-20%)] max-h-[90vh] w-full max-w-2xl items-end justify-center sm:max-w-lg md:max-w-2xl lg:max-w-2xl xl:max-w-2xl 2xl:max-w-5xl">
-                        <Image src="/hero.png" alt="hero" className="xs:scale-150 xs:-translate-y-20 h-fit w-auto" width={972} height={830} />
-                    </div>
-                </div> */}
-
-               
-
-                <div className="absolute bottom-4 left-4 flex w-fit items-center gap-2 rounded-md bg-teal-500/10 bg-gradient-to-r p-2 md:bottom-10 md:right-10 lg:left-auto lg:right-4">
-                    <div className="rounded-md px-2 py-1 text-xs font-bold text-teal-500 md:text-lg">#1</div>
-
-                    <div className="flex flex-col">
-                        <p className="text-xs md:text-sm">Doctor Recommended</p>
-                        <p className="text-xs text-gray-700 md:text-sm">SIMPLY GENIUS</p>
-                    </div>
                 </div>
-            </section>
-        </>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 mx-auto w-full">
+                <BlurIn delay={0} blur='8px' duration={1}>
+                    <div className="relative h-[60vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[85vh] 2xl:h-[90vh] max-w-[90%] md:max-w-[80%] lg:max-w-[70%] mx-auto">
+                        <Image
+                            src="/hero.png"
+                            alt="hero"
+                            fill
+                            sizes="(max-width: 640px) 90vw,
+                                   (max-width: 768px) 80vw,
+                                   70vw"
+                            priority
+                            className="object-contain object-bottom z-10"
+                            quality={90}
+                        />
+                    </div>
+                </BlurIn>
+            </div>
+
+            {/* desktop */}
+            <div className="hidden -z-10 lg:block h-full w-full overflow-hidden rounded-lg">
+                <motion.svg
+                    initial={{ opacity: 0, scale: .8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0 }}
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 1908 50"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className='transform rotate-5 absolute bottom-0 z-0'
+                >
+                    <defs>
+                        <path
+                            id="custom-text-path"
+                            d="M0.25 351.413C38.4067 340.394 128.117 321.203 181.703 332.595C248.685 346.835 436.136 426.682 450.133 436.853C460.399 444.314 523.613 480.082 555.605 486.185C587.597 492.288 693.11 478.597 722.562 477.031C799.042 472.962 1100.46 478.048 1187.44 426.173C1225.91 403.232 1244.43 370.23 1246.92 340.224C1249.42 310.218 1245.43 198.331 1250.92 180.531C1256.42 162.731 1263.42 45.2504 1391.39 19.8217C1519.35 -5.60705 1908.25 0.495854 1917.25 4.05588"
+                        />
+                    </defs>
+
+                    <motion.path
+                        initial={{ pathLength: 0, filter: 'blur(5px)' }}
+                        animate={{ pathLength: 1, filter: 'blur(0px)' }}
+                        transition={{ duration: 1.8, ease: 'easeIn' }}
+                        d="M0.25 351.413C38.4067 340.394 128.117 321.203 181.703 332.595C248.685 346.835 436.136 426.682 450.133 436.853C460.399 444.314 523.613 480.082 555.605 486.185C587.597 492.288 693.11 478.597 722.562 477.031C799.042 472.962 1100.46 478.048 1187.44 426.173C1225.91 403.232 1244.43 370.23 1246.92 340.224C1249.42 310.218 1245.43 198.331 1250.92 180.531C1256.42 162.731 1263.42 45.2504 1391.39 19.8217C1519.35 -5.60705 1908.25 0.495854 1917.25 4.05588"
+                        className="stroke-gray-200"
+                        strokeWidth="45"
+                    />
+
+                    <motion.text
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, }}
+                        transition={{ duration: 1.5, delay: 2, stiffness: 1 }}
+                        className="uppercase text-xs sm:text-sm md:text-base lg:text-lg"
+                        fill="#020203"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                    >
+                        <textPath id="custom-marquee-text" href="#custom-text-path">
+                            {/* Text added via JavaScript */}
+                        </textPath>
+                    </motion.text>
+                </motion.svg>
+            </div>
+
+            {/* mobile */}
+            <div className="-z-10 block lg:hidden h-full w-full overflow-hidden rounded-lg">
+                <motion.svg
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, delay: 0 }}
+                    width="100%"
+                    height="300"
+                    viewBox="0 0 370 50"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className='absolute bottom-0 z-0'
+                >
+                    <defs>
+                        <path
+                            id="mobile-text-path"
+                            d="M1 149.5C17.6667 113.833 74.4 37.1001 168 15.5001C261.6 -6.09991 341.333 1.83342 369.5 8.50009"
+                        />
+                    </defs>
+
+                    <motion.path
+                        initial={{ pathLength: 0, filter: 'blur(5px)' }}
+                        animate={{ pathLength: 1, filter: 'blur(0px)' }}
+                        transition={{ duration: 1.8, ease: 'easeIn' }}
+                        d="M1 149.5C17.6667 113.833 74.4 37.1001 168 15.5001C261.6 -6.09991 341.333 1.83342 369.5 8.50009"
+                        className="stroke-gray-200"
+                        strokeWidth="30"
+                    />
+
+                    <motion.text
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 2, stiffness: 1 }}
+                        className="uppercase text-xs sm:text-sm md:text-sm lg:text-base"
+                        fill="#020203"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                    >
+                        <textPath id="mobile-marquee-text" href="#mobile-text-path">
+                            {/* Text added via JavaScript */}
+                        </textPath>
+                    </motion.text>
+                </motion.svg>
+            </div>
+        </section>
     );
 };
 
