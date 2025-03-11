@@ -11,10 +11,10 @@ export default function ScienceCard() {
   return (
     <div className="relative w-full overflow-hidden rounded-3xl bg-black min-h-[550px] flex items-center justify-center">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#001B4D] to-[#004D1F] opacity-80"></div>
+      <div className="absolute inset-0 animate-pulse bg-gradient-to-r  from-[#000000] via-[#001B4D] to-[#004D1F] opacity-80"></div>
 
       {/* SVG Shapes */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden animate-pulse">
         <svg
           width="332"
           height="600"
