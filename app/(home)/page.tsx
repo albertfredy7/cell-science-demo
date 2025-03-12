@@ -1,3 +1,7 @@
+import About from './sections/About';
+import About2 from './sections/About2';
+import About3 from './sections/About3';
+import About4 from './sections/About4';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 import Hero from './sections/Hero';
@@ -10,7 +14,10 @@ export default function Home() {
     return (
         <>
             <Hero />
-           
+            <About/>
+           <About2/>
+           <About3/>
+           <About4/>
             <div className="h-[100vh] bg-red-100"></div>
             <ScienceExplore/>
             <Pipeline/>

@@ -14,11 +14,11 @@ const About = () => {
 
     return (
         <div className="relative h-screen overflow-x-hidden">
-            <section className="max-w-6xl h-full mx-auto px-4 py-10 md:py-20 flex flex-col md:flex-row items-center" >
+            <section className="max-w-6xl h-full mx-auto px-4 py-10 md:py-16 lg:py-20 flex flex-col md:flex-row items-center" >
 
-                <div className="max-w-2xl flex flex-col">
+                <div className="max-w-2xl flex flex-col md:max-w-xl lg:max-w-2xl">
                     <BlurIn>
-                        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-5xl font-normal leading-tight sm:leading-tight md:leading-tight lg:leading-tight xl:leading-tight 2xl:leading-tight mb-2 sm:mb-3 md:mb-4 lg:mb-5 xl:mb-6">
+                        <h1 className="text-2xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-5xl font-normal leading-tight sm:leading-tight md:leading-tight lg:leading-tight xl:leading-tight 2xl:leading-tight mb-2 sm:mb-3 md:mb-4 lg:mb-5 xl:mb-6">
                             We can bring to life your vision of health by focusing on{' '}
                             <GradientText className="font-normal text-start block sm:inline">
                                 cellular vitality
@@ -27,7 +27,7 @@ const About = () => {
                     </BlurIn>
 
                     <BlurIn delay={.5} >
-                        <p className="text-gray-700   max-w-56 lg:max-w-lg text-base font-normal md:text-lg mb-6 md:mb-8 leading-relaxed">
+                        <p className="text-gray-700 max-w-56 sm:max-w-md md:max-w-md lg:max-w-lg text-base font-normal md:text-xl mb-6 md:mb-8 leading-relaxed">
                             Cellscience Biotech Inc. focus on the{' '}
                             <span className="font-semibold">back to Cell intelligence</span>{' '}
                             approach to develop new and safer treatment options for women and couples struggling with conception.
@@ -43,20 +43,19 @@ const About = () => {
                     </BlurIn>
                 </div>
 
-                <div className="">
+                <div className="md:flex-1">
                     <motion.div className="right-0 bottom-0 absolute"
                         initial={{ filter: 'blur(10px)', opacity: 0, x: 100 }}
                         animate={isInView ? { filter: 'blur(0px)', opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.5, duration: 1.5 }}
-
                     >
                         <Image 
                             src="/old.png" 
                             alt="hero" 
-                            width={600} 
-                            height={600} 
-                            className="max-w-52 lg:max-w-sm"
-                            
+                            width={800} 
+                            height={800}
+                            quality={100} 
+                            className="max-w-52 md:max-w-[300px] lg:max-w-xs xl:max-w-xs 2xl:max-w-xs"
                         />
                     </motion.div>
                 </div>

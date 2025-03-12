@@ -9,7 +9,6 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import GradientText from '../components/GradientText';
-import About from './About';
 
 const Hero = () => {
     useEffect(() => {
@@ -52,9 +51,8 @@ const Hero = () => {
                         <BlurIn delay={0.4} duration={1.6}>
                             <div className='h-full p-10 2xl:ps-36 lg:text-left text-center md:pt-28 lg:pt-0 space-y-2'>
                                 <span className='text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl max-w-md inline-block'>
-    
                                     <h1 className='w-full max-w-xs md:max-w-lg xl:max-w-md text-2xl sm:text-2xl md:text-3xl lg:text-4xl'>You are unique and your body is made of trillions of</h1>
-                                    <GradientText className='w-full text-2xl sm:text-2xl md:text-3xl lg:text-4xl'>intelligent cells.</GradientText>
+                                    <GradientText className='w-full text-2xl sm:text-2xl md:text-3xl lg:text-4xl flex justify-center'>intelligent cells.</GradientText>
                                 </span>
                                 <div className="pt-4 flex justify-center lg:justify-start">
                                     <CustomButton className='font-normal tracking-wide'> <LetterSwapPingPong label={"KNOW MORE"} staggerFrom="first" reverse={true} className="font-medium" /></CustomButton>
@@ -63,7 +61,7 @@ const Hero = () => {
                         </BlurIn>
                         <div className='h-full w-full hidden lg:flex items-end justify-end  2xl:pb-28'>
                             <div className='2xl:pb-8 lg:pb-16 w-full'>
-                                <BlurIn delay={1.8} duration={1} >
+                                <BlurIn delay={1.8} duration={1}>
                                     <div className='space-y-2 float-end pt-6 2xl:pt-10 2xl:pr-20'>
     
                                         <GradientText>
@@ -195,7 +193,7 @@ const Hero = () => {
                     </motion.svg>
                 </div>
             </section>
-             <About/>
+             
         </>
     );
 };
