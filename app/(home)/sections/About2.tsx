@@ -9,8 +9,8 @@ const About2 = () => {
     const isInView = useInView(ref, { once: false });
 
     return (
-        <main className="relative min-h-screen overflow-x-hidden">
-            <section className="max-w-6xl min-h-full mx-auto px-2 sm:px-4 py-6 sm:py-10 md:py-20 flex flex-col md:flex-row items-center justify-end" >
+        <section className="relative min-h-screen overflow-x-hidden">
+            <div className="max-w-6xl min-h-full mx-auto px-2 sm:px-4 py-6 sm:py-10 md:py-20 flex flex-col md:flex-row items-center justify-end" >
                 {/* image */}
                 <div className="hidden lg:block">
                     <motion.div className="left-0 bottom-0 absolute"
@@ -74,8 +74,8 @@ const About2 = () => {
                         </div>
                     </BlurIn>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
     );
 };
 

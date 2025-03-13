@@ -13,8 +13,8 @@ const About = () => {
     const isInView = useInView(ref, { once: false });
 
     return (
-        <div className="relative h-screen overflow-x-hidden">
-            <section className="max-w-6xl h-full mx-auto px-4 py-10 md:py-16 lg:py-20 flex flex-col md:flex-row items-center" >
+        <section className="relative h-screen overflow-x-hidden">
+            <div className="max-w-6xl h-full mx-auto px-4 py-10 md:py-16 lg:py-20 flex flex-col md:flex-row items-center" >
 
                 <div className="max-w-2xl flex flex-col md:max-w-xl lg:max-w-2xl">
                     <BlurIn>
@@ -59,8 +59,8 @@ const About = () => {
                         />
                     </motion.div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     );
 };
 
