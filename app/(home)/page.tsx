@@ -5,6 +5,7 @@ import About4 from './sections/About4';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 import Hero from './sections/Hero';
+import Mitochondria from './sections/Mitochondria';
 import Pipeline from './sections/Pipeline';
 import ScienceExplore from './sections/ScienceExplore';
 import Team from './sections/Team';
@@ -18,7 +19,7 @@ export default function Home() {
            <About2/>
            <About3/>
            <About4/>
-            <div className="h-[100vh] bg-red-100"></div>
+           <Mitochondria/>
             <ScienceExplore/>
             <Pipeline/>
             <Team/>
