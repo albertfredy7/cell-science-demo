@@ -1,62 +1,63 @@
 "use client";
-import { BlurIn } from "@/components/Blur-in";
-import { motion, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import * as React from 'react';
+import * as React from "react";
 
 const About3 = () => {
-    const ref = React.useRef(null);
-    const isInView = useInView(ref, { once: false });
+    const containerRef = React.useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"],
+    });
+
+    const textOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
+    const textY = useTransform(scrollYProgress, [0.1, 0.3], [30, 0]);
+    const textScale = useTransform(scrollYProgress, [0.1, 0.3], [0.7, 1]);
+
+    const card1Opacity = useTransform(scrollYProgress, [0.35, 0.4], [0, 1]);
+    const card2Opacity = useTransform(scrollYProgress, [0.4, 0.45], [0, 1]);
+    const card3Opacity = useTransform(scrollYProgress, [0.45, 0.5], [0, 1]);
+
+    const card1Y = useTransform(scrollYProgress, [0.35, 0.4], [50, 0]);
+    const card2Y = useTransform(scrollYProgress, [0.4, 0.45], [50, 0]);
+    const card3Y = useTransform(scrollYProgress, [0.45, 0.5], [50, 0]);
 
     return (
-        <section className="relative min-h-screen overflow-x-hidden">
-            <div className="max-w-6xl min-h-full mx-auto px-2 sm:px-4 py-6 sm:py-10 md:py-20 flex flex-col md:flex-row items-center justify-end" >
+        <section ref={containerRef} className="relative h-[300vh]">
+            <div className="sticky top-32 lg:top-0 h-screen overflow-hidden">
+                <div className="max-w-6xl h-full mx-auto px-4 py-4 md:px-6 md:py-20 flex flex-col md:flex-row items-center justify-end">
+                    <div className="flex flex-col gap-6 md:gap-16 items-center justify-center w-full h-full">
+                        <motion.h1
+                            style={{ opacity: textOpacity, y: textY, scale: textScale }}
+                            className="font-normal text-lg xs:text-xl md:text-2xl lg:text-3xl leading-tight text-center md:max-w-md lg:max-w-4xl mx-auto px-2"
+                        >
+                            Cellscience Biotech Inc collaborate and interact with leading experts in the field of Reproductive medicine, longevity, cell therapy, Ovarian ageing, mitochondrial research & Ferroptosis form of cell death.
+                        </motion.h1>
 
-                {/* content */}
-                <div className="flex flex-col gap-3 sm:gap-16 items-center  justify-center w-full min-h-screen">
-                    <BlurIn>
-                        <h1 className="font-normal text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl  leading-tight sm:leading-tight md:leading-tight lg:leading-tight xl:leading-tight mb-2 sm:mb-3 md:mb-4 lg:mb-5 xl:mb-6 text-center md:max-w-md lg:max-w-4xl mx-auto px-2">
-                            Cellscience Biotech Inc collaborate  and interact with leading experts in  the field of Reproductive medicine,  longevity, cell therapy, Ovarian  ageing, mitochondrial research &   Ferroptosis form of cell death.
-                        </h1>
-                    </BlurIn>
-
-                    <BlurIn delay={.8}>
-                        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-6 lg:gap-10 max-w-3xl w-full px-2 sm:px-6" ref={ref}>
-                            <motion.div 
-                                className="flex flex-col items-center bg-gray-100 p-4 sm:p-6 rounded-lg w-full sm:w-1/3 h-auto sm:h-64 "
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ duration: 0.5 }}
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 lg:gap-10 max-w-3xl w-full px-2 sm:px-6">
+                            <motion.div
+                                style={{ opacity: card1Opacity, y: card1Y }}
+                                className="flex flex-col items-center bg-gray-100 p-4 md:p-6 rounded-lg w-full sm:w-1/3 min-h-[160px] sm:h-64"
                             >
-                                <Image src="/icons/fertility.png" alt="Cells are the cradle of life" width={40} height={40} className="w-24 sm:w-20 mix-blend-multiply" />
-                                <p className="text-center mt-2 sm:mt-4 text-xl md:text-xl">Fertility Preservation</p>
+                                <Image src="/icons/fertility.png" alt="Cells are the cradle of life" width={40} height={40} className="w-16 xs:w-20 sm:w-24 mix-blend-multiply" />
+                                <p className="text-center mt-3 md:mt-4 text-base xs:text-lg md:text-xl">Fertility Preservation</p>
                             </motion.div>
-                            <motion.div 
-                                className="flex flex-col items-center bg-gray-100 p-4 sm:p-6 rounded-lg w-full sm:w-1/3 h-auto sm:h-64 "
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ duration: 0.5, delay: 0.2 }}
+                            <motion.div
+                                style={{ opacity: card2Opacity, y: card2Y }}
+                                className="flex flex-col items-center bg-gray-100 p-4 md:p-6 rounded-lg w-full sm:w-1/3 min-h-[160px] sm:h-64"
                             >
-                                <Image src="/icons/oocyte.png" alt="Cellular health precedes organ health" width={40} height={40} className="w-24 sm:w-28 mix-blend-multiply" />
-                                <p className="text-center mt-2 sm:mt-4 text-xl md:text-xl">Oocyte Biology</p>
-                                <div className="invisible">
-                                    <p className="text-center text-xs">Spacer</p>
-                                </div>
+                                <Image src="/icons/oocyte.png" alt="Cellular health precedes organ health" width={40} height={40} className="w-16 xs:w-20 sm:w-28 mix-blend-multiply" />
+                                <p className="text-center mt-3 md:mt-4 text-base xs:text-lg md:text-xl">Oocyte Biology</p>
                             </motion.div>
-                            <motion.div 
-                                className="flex flex-col items-center bg-gray-100 p-4 sm:p-6 rounded-lg w-full sm:w-1/3 h-auto sm:h-64 "
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ duration: 0.5, delay: 0.4 }}
+                            <motion.div
+                                style={{ opacity: card3Opacity, y: card3Y }}
+                                className="flex flex-col items-center bg-gray-100 p-4 md:p-6 rounded-lg w-full sm:w-1/3 min-h-[160px] sm:h-64"
                             >
-                                <Image src="/icons/metabolism.png" alt="Your life story is imprinted in your cells" width={40} height={40} className="w-24 sm:w-20 mix-blend-multiply" />
-                                <p className="text-center mt-2 sm:mt-4 text-xl md:text-xl">Mitochondrial Metabolism</p>
-                                <div className="invisible">
-                                    <p className="text-center text-xs">Spacer</p>
-                                </div>
+                                <Image src="/icons/metabolism.png" alt="Your life story is imprinted in your cells" width={40} height={40} className="w-16 xs:w-20 sm:w-24 mix-blend-multiply" />
+                                <p className="text-center mt-3 md:mt-4 text-base xs:text-lg md:text-xl">Mitochondrial Metabolism</p>
                             </motion.div>
                         </div>
-                    </BlurIn>
+                    </div>
                 </div>
             </div>
         </section>
