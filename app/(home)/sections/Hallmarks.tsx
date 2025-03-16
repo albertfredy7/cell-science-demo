@@ -57,10 +57,10 @@ const TopicItem: React.FC<Topic> = ({ icon, title, colorClass }) => (
 );
 
 const Section: React.FC<SectionProps> = ({ bgClass, header, topics }) => (
-    <div className={`sticky top-24 lg:p-0 lg:top-0 h-screen overflow-hidden flex ${bgClass}`}>
-        <div className="container mx-auto px-4 py-4 md:px-6 md:py-20 flex flex-col md:flex-row items-center justify-around">
+    <div className={`sticky top-12 lg:p-0 lg:top-0 h-screen overflow-hidden flex ${bgClass}`}>
+        <div className="container mx-auto px-4 md:px-6 md:py-20 flex flex-col md:flex-row items-center justify-around">
             <SectionHeader title={header.title} description={header.description} />
-            <div className="mt-8 md:mt-0 space-y-8 md:ml-8">
+            <div className="md:mt-0 space-y-8 md:ml-8">
                 {topics.map((topic, index) => (
                     <TopicItem key={index} {...topic} />
                 ))}

@@ -70,7 +70,7 @@ const Mitochondria = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                             viewport={{ once: false, amount: 0.3 }}
-                            className="text-xl sm:text-xl md:text-xl lg:text-xl xl:text-xl leading-relaxed font-normal"
+                            className="text-base sm:text-base md:text-xl lg:text-xl xl:text-xl  font-normal"
                         >
                             Mitochondria do more than fuel your cells. They carry the essence of life
                             itself. As the architects of energy, they hold the blueprint for life,
