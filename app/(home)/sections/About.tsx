@@ -19,11 +19,11 @@ const About = () => {
     const textScale = useTransform(scrollYProgress, [0.1, 0.3], [0.7, 1]);
     const TextBlur = useTransform(scrollYProgress, [0.1, 0.35], ["blur(10px)", "blur(0px)"]);
 
-    const imageX = useTransform(scrollYProgress, [0.5, 0.6], [200, 0]);
-    const imageOpacity = useTransform(scrollYProgress, [0.5, 0.6], [0, 1]);
+    const imageX = useTransform(scrollYProgress, [0.3, 0.4], [200, 0]);
+    const imageOpacity = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
 
     return (
-        <section ref={containerRef} className="relative h-[200vh]">
+        <section ref={containerRef} className="relative h-[150vh]">
             <div className="sticky top-0 h-screen flex items-center justify-start overflow-hidden">
                 <div className="max-w-6xl container mx-auto px-4 py-10 md:py-16 lg:py-20 flex flex-col md:flex-row items-center lg:items-start">
                     <motion.div
@@ -36,7 +36,7 @@ const About = () => {
                             width={800}
                             height={800}
                             quality={100}
-                            className="max-w-52 md:max-w-[300px] lg:max-w-xs xl:max-w-xs 2xl:max-w-xs"
+                            className="max-w-48 md:max-w-60 "
                         />
                     </motion.div>
 
@@ -44,15 +44,15 @@ const About = () => {
                         style={{ opacity: textOpacity, y: textY, scale: textScale, filter: TextBlur }}
                         className="max-w-2xl flex flex-col md:max-w-xl lg:max-w-2xl"
                     >
-                        <h1 className="text-2xl md:text-4xl xl:text-5xl font-normal leading-tight mb-6">
+                        <h1 className="text-3xl md:text-4xl xl:text-5xl font-normal leading-tight mb-6">
                             We can bring to life your vision of health by focusing on{' '}
                             <GradientText className="font-normal text-start block sm:inline">
                                 cellular vitality
                             </GradientText>
                         </h1>
-                        <p className="text-gray-700 max-w-60 lg:max-w-lg text-base md:text-xl mb-8 leading-relaxed">
+                        <p className="text-gray-700 max-w-60 lg:max-w-lg text-base md:text-xl mb-8 font-normal">
                             Cellscience Biotech Inc. focuses on the{' '}
-                            <span className="font-semibold">back to Cell intelligence</span>{' '}
+                            <span className="font-medium">back to Cell intelligence</span>{' '}
                             approach to develop new and safer treatment options for women and couples struggling with conception.
                         </p>
                         <div>

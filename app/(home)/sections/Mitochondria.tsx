@@ -22,7 +22,7 @@ const Mitochondria = () => {
     // Use the dynamic windowWidth value
     const imageX = useTransform(scrollYProgress, [0, 0.5, 1], [-windowWidth / 2, 0, 50]);
     const imageRotate = useTransform(scrollYProgress, [0, 0.5, 1], [180, 0, 45]);
-    const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 1.1]);
+    const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1.1]);
     const imageOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 1, 1]);
 
     const textY = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -30]);
@@ -31,10 +31,10 @@ const Mitochondria = () => {
 
     return (
         <section ref={sectionRef} className="relative overflow-hidden">
-            <div className="mx-auto flex flex-col lg:flex-row h-auto lg:min-h-screen max-w-7xl px-4 sm:px-6 md:px-8 max-sm:overflow-x-hidden">
+            <div className="mx-auto flex flex-col lg:flex-row h-auto lg:min-h-screen max-w-6xl px-4 sm:px-6 md:px-8 max-sm:overflow-x-hidden">
                 <motion.div
                     style={{ x: imageX, rotate: imageRotate, scale: imageScale, opacity: imageOpacity }}
-                    className="w-full lg:w-1/2 flex items-center justify-center py-8 sm:py-12 lg:py-0 max-sm:py-4 origin-center"
+                    className="w-full lg:w-1/`2 flex items-center justify-center py-8 sm:py-12 lg:py-0 max-sm:py-4 origin-center"
                 >
                     <motion.div className="w-full">
                         <Image

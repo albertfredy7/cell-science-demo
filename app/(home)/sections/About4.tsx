@@ -60,9 +60,9 @@ const About4 = () => {
     ];
 
     return (
-        <div ref={containerRef} className="relative h-[150vh] sm:h-[175vh] md:h-[200vh]">
+        <div ref={containerRef} className="relative h-[200vh] ">
             <div className="sticky top-0 sm:top-5 md:top-10 h-[100vh] overflow-hidden flex items-center">
-                <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
+                <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
                     <div className="flex flex-col md:flex-row gap-4 sm:gap-8 md:gap-12 lg:gap-16 items-center justify-between w-full">
                         <motion.div
                             style={{

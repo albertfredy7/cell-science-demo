@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
+
 const About2 = () => {
     const containerRef = React.useRef(null);
     const { scrollYProgress } = useScroll({
@@ -12,75 +13,101 @@ const About2 = () => {
 
     // Text animation
     const textOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
-    const textY = useTransform(scrollYProgress, [0.1, 0.3], [30, 0]);
+    const textY = useTransform(scrollYProgress, [0.1, 0.3], [50, 0]);
     const textScale = useTransform(scrollYProgress, [0.1, 0.3], [0.8, 1]);
-    const TextBlur = useTransform(scrollYProgress, [0.1, 0.35], ["blur(10px)", "blur(0px)"]);
+    const TextBlur = useTransform(scrollYProgress, [0.1, 0.3], ["blur(15px)", "blur(0px)"]);
 
-    // Card animations
-    const card1Opacity = useTransform(scrollYProgress, [0.35, 0.4], [0, 1]);
-    const card2Opacity = useTransform(scrollYProgress, [0.4, 0.45], [0, 1]);
-    const card3Opacity = useTransform(scrollYProgress, [0.45, 0.5], [0, 1]);
+    // Card animations with delayed appearances
+    const cardAnimations = [
+        useTransform(scrollYProgress, [0.3, 0.4], [0, 1]),
+        useTransform(scrollYProgress, [0.4, 0.5], [0, 1]),
+        useTransform(scrollYProgress, [0.5, 0.6], [0, 1])
+    ];
 
-    const card1Y = useTransform(scrollYProgress, [0.35, 0.4], [50, 0]);
-    const card2Y = useTransform(scrollYProgress, [0.4, 0.45], [50, 0]);
-    const card3Y = useTransform(scrollYProgress, [0.45, 0.5], [50, 0]);
+    const cardY = [
+        useTransform(scrollYProgress, [0.3, 0.4], [50, 0]),
+        useTransform(scrollYProgress, [0.4, 0.5], [50, 0]),
+        useTransform(scrollYProgress, [0.5, 0.6], [50, 0])
+    ];
 
     // Image slide-in effect
-    const imageX = useTransform(scrollYProgress, [0.5, 0.6], [-200, 0]);
-    const imageOpacity = useTransform(scrollYProgress, [0.5, 0.6], [0, 1]);
+    const imageX = useTransform(scrollYProgress, [0.3, 0.5], [-250, 0]);
+    const imageOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+
+    const cardData = [
+        { src: "/icons/cradle.png", alt: "Cells are the cradle of life", text: "Cells are the cradle of life" },
+        { src: "/icons/organHealth.png", alt: "Cellular health precedes organ health", text: "Cellular health precedes organ health" },
+        { src: "/icons/human.png", alt: "Your life story is imprinted in your cells", text: "Your life story is imprinted in your cells" }
+    ];
 
     return (
-        <section ref={containerRef} className="relative h-[150vh] ">
-            <div className="sticky top-10 lg:top-0 h-screen overflow-hidden flex items-center">
-                <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-20 flex flex-col items-center justify-center gap-5">
+        <section ref={containerRef} className="relative h-[200lvh] ">
+            <div className="sticky top-10 lg:top-12 h-svh  flex items-center justify-start overflow-hidden">
+                <div className="max-w-md lg:max-w-3xl container mx-auto px-4 md:py-16 lg:py-20 flex flex-col  md:flex-row items-center lg:items-start  ">
+                    {/* Animated Image */}
 
-                    {/* Image for larger screens */}
                     <motion.div
-                        className="hidden md:block absolute left-0 bottom-0 w-full xl:max-w-sm 2xl:max-w-xl"
+                        className="hidden md:block absolute left-0 bottom-0 w-full max-w-xs 2xl:max-w-[22%] "
                         style={{ x: imageX, opacity: imageOpacity }}
                     >
                         <Image
                             src="/young.png"
                             alt="hero"
-                            width={500}
-                            height={500}
+                            width={600}
+                            height={600}
                             className="w-full h-auto"
                         />
                     </motion.div>
 
-                  
-
                     {/* Animated Text */}
-                    <motion.h1
-                        style={{ opacity: textOpacity, y: textY, scale: textScale, filter: TextBlur }}
-                        className="text-center font-normal text-lg sm:text-2xl md:text-3xl leading-tight max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl px-4 sm:px-6"
-                    >
-                        We collaborate with experts to develop advanced treatments in reproductive medicine and women&apos;s health for couples struggling with conception.
-                    </motion.h1>
+                    <div className="flex flex-col gap-6 items-center justify-center px-6">
+                        <motion.h1
+                            style={{ opacity: textOpacity, y: textY, scale: textScale, filter: TextBlur }}
+                            className="font-normal text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl leading-tight sm:leading-tight md:leading-tight lg:leading-tight text-center "
+                        >
+                            We collaborate with experts to develop advanced treatments in reproductive medicine and women&apos;s health for couples struggling with conception.
+                        </motion.h1>
 
-                    {/* Cards Section */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-4xl w-full px-4 sm:px-6">
-                        <motion.div
-                            style={{ opacity: card1Opacity, y: card1Y }}
-                            className="flex flex-col items-center bg-gray-100 p-4 sm:p-6 rounded-lg w-full text-center"
-                        >
-                            <Image src="/icons/cradle.png" alt="Cells are the cradle of life" width={40} height={40} className="w-12 sm:w-16 mix-blend-multiply" />
-                            <p className="mt-2 sm:mt-4 text-base sm:text-lg md:text-xl">Cells are the cradle of life</p>
-                        </motion.div>
-                        <motion.div
-                            style={{ opacity: card2Opacity, y: card2Y }}
-                            className="flex flex-col items-center bg-gray-100 p-4 sm:p-6 rounded-lg w-full text-center"
-                        >
-                            <Image src="/icons/organHealth.png" alt="Cellular health precedes organ health" width={40} height={40} className="w-12 sm:w-16 mix-blend-multiply" />
-                            <p className="mt-2 sm:mt-4 text-base sm:text-lg md:text-xl">Cellular health precedes organ health</p>
-                        </motion.div>
-                        <motion.div
-                            style={{ opacity: card3Opacity, y: card3Y }}
-                            className="flex flex-col items-center bg-gray-100 p-4 sm:p-6 rounded-lg w-full text-center"
-                        >
-                            <Image src="/icons/human.png" alt="Your life story is imprinted in your cells" width={40} height={40} className="w-12 sm:w-16 mix-blend-multiply" />
-                            <p className="mt-2 sm:mt-4 text-base sm:text-lg md:text-xl">Your life story is imprinted in your cells</p>
-                        </motion.div>
+                        {/* Cards Section */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 w-full max-w-xl mx-auto  ">
+                            {cardData.map((card, index) => (
+                                // <motion.div
+                                //     key={index}
+                                //     style={{ opacity: cardAnimations[index], y: cardY[index] }}
+                                //     className="flex flex-col gap-3 items-center bg-gray-100 p-6 rounded-xl text-center"
+                                // >
+                                //     <Image
+                                //         src={card.src}
+                                //         alt={card.alt}
+                                //         width={50}
+                                //         height={50}
+                                //         className="w-14 sm:w-16 mix-blend-multiply"
+                                //     />
+                                //     <p className="font-normal text-base leading-tight sm:leading-tight md:leading-tight lg:leading-tight text-center ">{card.text}</p>
+                                // </motion.div>
+
+                                <motion.div
+                                    key={index}
+                                        style={{ opacity: cardAnimations[index], y: cardY[index] }}
+                                        className="flex flex-col gap-3 items-center bg-gray-100 p-6 rounded-xl text-center"
+                                >
+                                    <div className="flex items-center justify-center  w-14">
+                                        <Image
+                                            src={card.src || "/placeholder.svg"}
+                                            alt={card.alt}
+                                            width={40}
+                                            height={40}
+                                            className="w-full h-full object-contain mix-blend-multiply"
+                                        />
+                                    </div>
+                                    <p className="text-center mt-2 xs:mt-3 sm:mt-4 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl max-w-full">
+                                        {card.text}
+                                    </p>
+                                </motion.div>
+
+
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,3 +116,4 @@ const About2 = () => {
 };
 
 export default About2;
+
