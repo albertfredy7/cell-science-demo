@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TextAnimate } from "./TextAnimate";
 
 export default function Footer() {
     const navItems = [
@@ -15,9 +16,11 @@ export default function Footer() {
      
             <footer className="w-full p-4 sm:p-6 container mx-auto bg-background flex flex-col gap-6 sm:gap-10 items-center justify-center py-8 sm:py-14">
                 {/* Main heading - responsive text size */}
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black font-medium text-center">
-                    Age less, Live more
-                </p>
+                <TextAnimate type="swingDrop">
+                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black font-medium text-center">
+                        Age less, Live more
+                    </p>
+                </TextAnimate>
 
                 <div className="bg-foreground space-y-6 rounded-3xl p-6 sm:pt-10 md:pt-16 lg:pt-28 pb-10 lg:px-16 w-full">
                     {/* Newsletter and Address section */}

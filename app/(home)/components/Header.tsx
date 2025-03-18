@@ -29,7 +29,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:space-x-6 lg:space-x-8">
+          <nav className="hidden lg:flex  lg:space-x-8">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
                 <Link href={item.href} className={`inline-flex items-center text-base font-normal py-2 ${pathname === item.href ? 'underline text-black' : 'text-black'}`}>
@@ -49,7 +49,7 @@ export default function Header() {
           </nav>
 
           {/* Mobile Navigation */}
-          <div className='md:hidden'>
+          <div className='lg:hidden'>
             {isMenuOpen ? (
               <button
                 onClick={() => setIsMenuOpen(false)}
@@ -109,7 +109,7 @@ export default function Header() {
                 damping: 40,
                 duration: 0.3,
               }}
-              className='md:hidden fixed h-screen top-16 overflow-hidden left-0 right-0 bg-white z-40 shadow-sm'
+              className='lg:hidden fixed h-screen top-16 overflow-hidden left-0 right-0 bg-white z-40 shadow-sm'
             >
               <nav className='flex flex-col  space-y-4  py-2'>
                 {navItems.map((item) => (

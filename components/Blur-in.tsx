@@ -11,7 +11,7 @@ interface BlurInProps {
 
 export const BlurIn = ({ children, delay = 0, duration = 1.2, blur = '15px' }: BlurInProps) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
   return (
     <motion.span
       ref={ref}

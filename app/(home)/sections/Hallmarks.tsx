@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { TextAnimate } from '../components/TextAnimate';
 
 
 // Type definitions
@@ -23,35 +24,41 @@ interface SectionProps {
 // Reusable components
 const SectionHeader: React.FC<Header> = ({ title, description }) => (
     <div>
-        <h1 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-normal mb-6">{title}</h1>
-        <p className="text-base md:text-lg lg:text-xl max-w-xl md:max-w-2xl leading-relaxed font-light">
-            {description}
-        </p>
+        <TextAnimate type='shiftInUp'><h1 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-normal mb-6">{title}</h1></TextAnimate>
+        <TextAnimate type='shiftInUp'>
+            <p className="text-base md:text-lg lg:text-xl max-w-xl md:max-w-2xl leading-relaxed font-light">
+                {description}
+            </p>
+        </TextAnimate>
     </div>
 );
 
 const TopicItem: React.FC<Topic> = ({ icon, title, colorClass }) => (
     <div className="flex items-center">
-        <div className={`${colorClass} rounded-full w-16 h-16 flex items-center justify-center`}>
-            <Image src={icon} alt={title}  width={500} height={500} className='w-16 h-16' quality={100} />
-        </div>
+        <TextAnimate type='shiftInUp'>
+            <div className={`${colorClass} rounded-full w-16 h-16 flex items-center justify-center`}>
+                <Image src={icon} alt={title}  width={500} height={500} className='w-16 h-16' quality={100} />
+            </div>
+        </TextAnimate>
         <div className="ml-4">
-            <h3 className="font-medium text-lg">{title}</h3>
-            <a href="#" className="text-sm flex items-center">
-                Learn more
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-4 h-4 ml-1"
-                >
-                    <path
-                        fillRule="evenodd"
-                        d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-                        clipRule="evenodd"
-                    />
-                </svg>
-            </a>
+           <TextAnimate type='whipInUp'>
+                <h3 className="font-normal text-lg leading-normal">{title}</h3>
+                <a href="#" className="text-sm flex items-center">
+                    Learn more
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-4 h-4 ml-1"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                </a>
+           </TextAnimate>
         </div>
     </div>
 );

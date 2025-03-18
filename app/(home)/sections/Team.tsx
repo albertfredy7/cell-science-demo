@@ -1,6 +1,7 @@
 "use client";
 
 import { TeamsAccordion } from "../components/TeamsAccordion";
+import { TextAnimate } from "../components/TextAnimate";
 
 const teamMembers = [
   {
@@ -53,16 +54,20 @@ export default function Team() {
     <section className="py-16  lg:h-[100vh] lg:flex justify-center items-center bg-gradient-to-b from-gray-50 to-white" id="team">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-gray-900 mb-4">Our Team</h2>
-          <p className="text-xl sm:text-2xl md:text-2xl font-light text-gray-700 max-w-3xl mx-auto">
-            CellScience Biotech Inc. collaborate with Scientists, institutions,
-            academic organisations, reproductive specialist, experts and
-            Tech leaders who believe to make a difference in women&apos;s
-            health and reproductive science.
-          </p>
+          <TextAnimate type="shiftInUp">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-gray-900 mb-4">Our Team</h2>
+          </TextAnimate>          
+          <TextAnimate type="shiftInUp" delay={0.2}>
+            <p className="text-xl sm:text-2xl md:text-2xl font-light text-gray-700 max-w-3xl mx-auto">
+              CellScience Biotech Inc. collaborate with Scientists, institutions,
+              academic organisations, reproductive specialist, experts and
+              Tech leaders who believe to make a difference in women&apos;s
+              health and reproductive science.
+            </p>
+          </TextAnimate>
         </div>
 
-        <TeamsAccordion items={teamMembers} className="max-w-6xl" />
+        <TeamsAccordion items={teamMembers} className="max-w-5xl" />
       </div>
     </section>
   );

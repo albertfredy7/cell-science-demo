@@ -31,8 +31,8 @@ const About2 = () => {
     ];
 
     // Image slide-in effect
-    const imageX = useTransform(scrollYProgress, [0.3, 0.5], [-250, 0]);
-    const imageOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+    const imageX = useTransform(scrollYProgress, [0.3, 0.5,0.7,0.8], [-250, 0,0,-250]);
+    const imageOpacity = useTransform(scrollYProgress, [0.3, 0.5,0.7,0.8], [0, 1,1,0]);
 
     const cardData = [
         { src: "/icons/cradle.png", alt: "Cells are the cradle of life", text: "Cells are the cradle of life" },
@@ -43,7 +43,7 @@ const About2 = () => {
     return (
         <section ref={containerRef} className="relative h-[200lvh] ">
             <div className="sticky top-10 lg:top-12 h-svh  flex items-center justify-start overflow-hidden">
-                <div className="max-w-md lg:max-w-3xl container mx-auto px-4 md:py-16 lg:py-20 flex flex-col  md:flex-row items-center lg:items-start  ">
+                <div className="max-w-md lg:max-w-xl container mx-auto px-4 md:py-16 lg:py-20 flex flex-col  md:flex-row items-center lg:items-start  ">
                     {/* Animated Image */}
 
                     <motion.div
