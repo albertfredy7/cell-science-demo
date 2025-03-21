@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <header id='top' className='bg-white  lg:bg-transparent z-50 fixed  w-full'>
-      <div className='top-0 w-full bg-white/50  backdrop-blur-md z-50 xl:max-w-6xl 2xl:max-w-7xl mx-auto'>
+      <div className='top-0 w-full bg-white/10  backdrop-blur-md z-50 xl:max-w-6xl 2xl:max-w-7xl mx-auto'>
         <div className='mx-auto flex h-16 items-center justify-between px-4'>
           <Link href='/' className='flex items-center space-x-2'>
             <Image src={'/CellScienceLogo.png'} width={250} height={50} alt='Cell science' />
