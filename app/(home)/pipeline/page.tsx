@@ -10,12 +10,14 @@ import Manifestations from "./secttions/Manifestations";
 import ParentingBeforeConception from "./secttions/ParentingBeforeConception";
 import Technology from "./secttions/Technology";
 import { Cell } from "./secttions/TextReveal2";
+import VideoSection from "./secttions/VideoSection";
 
 export default function Page() {
     return (
         <>
         <Hero/>
         <ScrollVelocityChild/>
+        <VideoSection/>
         <Homeostasis/>
         <ParentingBeforeConception/>
         <Cell/>
