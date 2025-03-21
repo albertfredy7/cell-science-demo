@@ -68,7 +68,7 @@ const ParagraphReveal: FC<ParagraphRevealProps> = ({
             </div>
 
             {/* Revealing animation */}
-            <div className="relative text-2xl md:text-5xl text-white">
+            <div className="relative text-2xl  text-white">
                 {words.map((word, i) => {
                     const wordStart = i / words.length
                     const wordEnd = (i + 1) / words.length
