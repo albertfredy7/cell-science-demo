@@ -62,7 +62,7 @@ const Hero = () => {
         >
             {/* Main content container */}
             <div className="flex-1 w-full pt-16 xs:pt-20 sm:pt-24 lg:pt-28 mx-auto flex flex-col ">
-                <div className="flex-1 xl:grid grid-cols-2 z-20 ">
+                <div className="flex-1 lg:grid grid-cols-2 z-20 ">
                     {/* Left column - Main heading */}
            
                         <div className="h-full p-4 sm:p-6 md:p-8 lg:p-10 2xl:ps-36 xl:text-left text-center pt-[16%] md:pt-20 lg:pt-0 space-y-2 ">
@@ -96,7 +96,7 @@ const Hero = () => {
               
 
                     {/* Right column - Now visible on all devices */}
-                    <div className="  absolute right-0 bottom-0 hidden w-full xl:flex items-end  justify-end xl:pr-[1%] xl:pb-[4%] px-4 sm:px-6 md:px-8 lg:px-0 pb-10 ">
+                    <div className="  absolute right-0 bottom-0 hidden w-full lg:flex items-end  justify-end xl:pr-[1%] xl:pb-[4%] px-4 sm:px-6 md:px-8 lg:px-0 pb-10 ">
                        
                             <TextAnimate type='shiftInUp' delay={4}>
                                 <div className="space-y-2 mx-auto lg:float-end pt-10 lg:pt-10 2xl:pt-16  max-w-sm md:max-w-md lg:max-w-sm xl:max-w-xs 2xl:max-w-md text-center lg:text-left">
@@ -149,7 +149,7 @@ const Hero = () => {
             </div>
 
             {/* Desktop curved text path */}
-            <div className="hidden -z-10 xl:block h-full w-full overflow-hidden rounded-lg">
+            <div className="hidden -z-10 lg:block h-full w-full overflow-hidden rounded-lg">
                 <motion.svg
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -194,7 +194,7 @@ const Hero = () => {
             </div>
 
             {/* Mobile curved text path */}
-            <div className="-z-10 block xl:hidden h-full w-full overflow-hidden rounded-lg">
+            <div className="-z-10 block lg:hidden h-full w-full overflow-hidden rounded-lg">
                 <motion.svg
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -240,7 +240,7 @@ const Hero = () => {
 
 
             {/* tablet curve text path */}
-            <div className="hidden md:block xl:hidden h-full w-full overflow-hidden rounded-lg -z-10">
+            <div className="hidden md:block lg:hidden h-full w-full overflow-hidden rounded-lg -z-10">
                 <motion.svg
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
