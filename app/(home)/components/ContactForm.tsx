@@ -39,7 +39,7 @@ export default function ContactForm() {
         const body = encodeURIComponent(
             `Name: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\nMessage: ${values.message}`
         );
-        const mailtoLink = `mailto:hello@cellscience.com?subject=${subject}&body=${body}`;
+        const mailtoLink = `mailto:ani@cellsciencebiotech.com/?subject=${subject}&body=${body}`;
         window.location.href = mailtoLink;
     }
 

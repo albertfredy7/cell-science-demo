@@ -8,12 +8,12 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 const navItems = [
-  { name: "Company", href: "/company" },
+  { name: "Company", href: "/#team" },
   { name: "Science", href: "/science" },
   { name: "Product / Pipeline", href: "/pipeline" },
   { name: "Publications", href: "/publications" },
   { name: "Career", href: "/career" },
-  { name: "Team", href: "/team" },
+  { name: "Team", href: "/#team" },
 ]
 
 export default function Header() {
@@ -40,7 +40,7 @@ export default function Header() {
             {/* Contact Button */}
           <div className="hidden md:block">
             <Link
-              href="/contact"
+              href="/#contact"
               className={`inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 ${pathname === '/contact' ? 'underline' : ''}`}
             >
               Contact
@@ -123,7 +123,7 @@ export default function Header() {
                   </Link>
                 ))}
                 <Link
-                  href='/contact'
+                  href='/#contact'
                   className={`text-md font-medium px-6 transition-colors hover:text-black ${pathname === '/contact' ? 'underline text-black' : 'text-gray-600'}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
