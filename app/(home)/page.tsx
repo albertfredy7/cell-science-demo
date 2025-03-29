@@ -2,6 +2,7 @@ import About from './sections/About';
 import About2 from './sections/About2';
 import About3 from './sections/About3';
 import About4 from './sections/About4';
+import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 import Hallmarks from './sections/Hallmarks';
 import Hero from './sections/Hero';
@@ -26,7 +27,8 @@ export default function Home() {
             <Team/>
             {/* currently hiding, will add after implementation */}
             {/* <Testimonials/>
-            <Blog/> */}
+             */}
+            <Blog />
             <Contact/>
         </>
     );
