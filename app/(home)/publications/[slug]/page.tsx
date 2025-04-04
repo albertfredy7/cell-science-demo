@@ -111,11 +111,8 @@ export default async function Page({
                 {tagNames}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight mb-0">
-                {/* <Balancer> */}
-                  <span > {post.title.rendered}</span>
-                {/* </Balancer> */}
+                <span> {post.title.rendered}</span>
               </h1>
-
             </Container>
           </div>
         </div>
