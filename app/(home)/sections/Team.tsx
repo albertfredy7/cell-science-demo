@@ -6,7 +6,7 @@ import { TextAnimate } from "../components/TextAnimate";
 const teamMembers = [
   {
     id: "1",
-    url: "/team/sample.png", // Placeholder URL
+    url: "/team/Ani.png", // Placeholder URL
     name: "Ani B",
     title: "CEO & Founder",
     description: "",
@@ -14,7 +14,7 @@ const teamMembers = [
   },
   {
     id: "2",
-    url: "/team/sample2.png", // Placeholder URL
+    url: "/team/Anupama.png", // Placeholder URL
     name: "Anupama Thampy",
     title: "Director",
     description: "",

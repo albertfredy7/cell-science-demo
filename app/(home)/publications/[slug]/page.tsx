@@ -115,7 +115,7 @@ export default async function Page({
                 {tagNames}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight mb-0">
-                <span> {post.title.rendered}</span>
+                <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
               </h1>
             </Container>
           </div>
