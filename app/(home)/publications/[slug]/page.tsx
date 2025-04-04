@@ -10,7 +10,6 @@ import { Article, Container, Section } from "@/components/craft";
 import { siteConfig } from '@/lib/siteConfig';
 import Image from "next/image";
 import Link from "next/link";
-import Balancer from "react-wrap-balancer";
 
 import type { Metadata } from "next";
 
@@ -104,17 +103,19 @@ export default async function Page({
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent"></div>
 
-          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 lg:p-12">
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 lg:p-12 w-full">
             <Container>
               {/* Tags */}
+
               <span className="text-sm font-normal tracking-wide text-white mb-2 inline-block">
                 {tagNames}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight mb-0">
-                <Balancer>
-                  <span dangerouslySetInnerHTML={{ __html: post.title.rendered }}></span>
-                </Balancer>
+                {/* <Balancer> */}
+                  <span > {post.title.rendered}</span>
+                {/* </Balancer> */}
               </h1>
+
             </Container>
           </div>
         </div>
