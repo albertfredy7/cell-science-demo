@@ -14,11 +14,15 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const posts = await getAllPosts();
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error("Failed to fetch posts in generateStaticParams:", error);
+    return []; // Return an empty array as a fallback
+  }
 }
 
 export async function generateMetadata({
