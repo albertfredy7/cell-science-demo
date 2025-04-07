@@ -1,5 +1,6 @@
 "use client"
 
+import ReactLenis from "lenis/react";
 import ScrollVelocityChild from "./components/ScrollVelocityChild";
 import CoQ10 from "./secttions/CoQ10";
 import Diseases from "./secttions/Diseases";
@@ -15,6 +16,13 @@ import VideoSection from "./secttions/VideoSection";
 export default function Page() {
     return (
         <>
+        <ReactLenis
+            root
+            options={{
+                duration: 3,
+                infinite: false,
+            }}
+        >
         <Hero/>
         <ScrollVelocityChild/>
         <VideoSection/>
@@ -26,6 +34,7 @@ export default function Page() {
         <Diseases/>
         <Manifestations/>
         <CoQ10/>
+        </ReactLenis>
         </>
     );
 }

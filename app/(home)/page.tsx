@@ -1,3 +1,5 @@
+
+import { ReactLenis } from 'lenis/react';
 import About from './sections/About';
 import About2 from './sections/About2';
 import About3 from './sections/About3';
@@ -11,25 +13,31 @@ import Pipeline from './sections/Pipeline';
 import ScienceExplore from './sections/ScienceExplore';
 import Team from './sections/Team';
 
+
 export default function Home() {
     return (
-        <>
-            <Hero />
-            {/* <Hero2/> */}
-            <About/>
-           <About2/>
-           <About3/>
-           <About4/>
-           <Mitochondria/>
-            <ScienceExplore/>
-            <Hallmarks/>
-            <Pipeline/>
-            <Team/>
-            {/* currently hiding, will add after implementation */}
-            {/* <Testimonials/>
-             */}
-            <Blog />
-            <Contact/>
-        </>
+        <ReactLenis
+            root
+            options={{
+                duration: 3,
+                infinite: false,
+            }}
+            
+        >
+            <div>
+                <Hero />
+                <About />
+                <About2 />
+                <About3 />
+                <About4 />
+                <Mitochondria />
+                <ScienceExplore />
+                <Hallmarks />
+                <Pipeline />
+                <Team />
+                <Contact />
+                <Blog />
+            </div>
+        </ReactLenis>
     );
 }
