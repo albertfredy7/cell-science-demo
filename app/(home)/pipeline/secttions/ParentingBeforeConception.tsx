@@ -17,11 +17,8 @@ const TargetArea = ({ children }: TargetAreaProps) => (
 const ParentingBeforeConception = () => {
     return (
         <section className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8">
-            <header className="bg-gray-200 mb-6 sm:mb-8 flex items-center p-3 sm:p-4">
-                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mr-4 sm:mr-6">
-                    2
-                </span>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-normal">
+            <header className="mb-6 sm:mb-8 flex items-center p-3 sm:p-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl max-w-6xl font-normal">
                     Parenting Before Conception
                 </h2>
             </header>

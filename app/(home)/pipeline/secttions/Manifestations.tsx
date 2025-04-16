@@ -11,14 +11,14 @@ const Manifestations = () => {
     ];
 
     return (
-        <section className="container mx-auto px-4 py-12">
+        <section className="max-w-6xl mx-auto px-4 py-12">
             <div className="flex flex-col w-full">
                 <TextAnimate type="calmInUp">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-8 text-center">
-                        CoQ10 Deficiency - Clinical Manifestations
+                    <h2 className="text-2xl md:text-3xl font-normal mb-8 text-left">
+                        CoQ10 Deficiency - Clinical Manifestations in Infants
                     </h2>
                 </TextAnimate>
-                <div className="flex flex-col items-center gap-10 w-full">
+                <div className="flex flex-col gap-10 w-full">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl">
                             {manifestations.map((item) => (
                                 <div key={item.id} className="flex items-start space-x-4 border-gray-700 border-b py-2">

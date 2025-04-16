@@ -39,14 +39,23 @@ const Diseases = () => {
         [0.92, 1]
     );
 
+    const reproductiveOpacity = useTransform(scrollYProgress,
+        isMobile ? [0.4, 0.6] : [0.5, 0.7],
+        [0, 1]
+    );
+    const reproductiveScale = useTransform(scrollYProgress,
+        isMobile ? [0.4, 0.6] : [0.5, 0.7],
+        [0.92, 1]
+    );
+
+
     return (
         <section ref={containerRef} className="relative w-full h-auto pt-16">
             {/* Sticky container */}
             <div className="sticky top-0 2xl:top-20 flex flex-col items-center justify-center w-full h-screen px-4 sm:px-6 md:px-8 lg:px-12">
                 <TextAnimate type="shiftInUp">
                     <h2 className="text-xl font-normal text-center sm:text-2xl md:text-3xl 2xl:text-4xl  max-w-xl">
-                        Multisystem Clinical Presentation of Mitochondrial Diseases
-                    </h2>
+                        CoQ10 Deficiency - The Multisystem Mitochondrial Diseases                    </h2>
                 </TextAnimate>
 
                 <div className="relative w-full h-[70vh] sm:h-[70vh] md:h-[70vh] lg:h-[80vh] 2xl:h-[90vh] max-w-5xl  overflow-hidden">
@@ -75,6 +84,23 @@ const Diseases = () => {
                     >
                         <Image
                             src={'/diseases/labels.svg'}
+                            alt="Mitochondrial diseases labels"
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 70vw"
+                            className="object-contain object-center"
+                        />
+                    </motion.div>
+
+                    {/* reproductive layger */}
+                    <motion.div
+                        className="absolute inset-0 w-full h-full"
+                        style={{
+                            opacity: reproductiveOpacity,
+                            scale: reproductiveScale,
+                        }}
+                    >
+                        <Image
+                            src={'/diseases/reproductive.svg'}
                             alt="Mitochondrial diseases labels"
                             fill
                             sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 70vw"

@@ -1,81 +1,81 @@
-import { CustomButton } from "@/components/CustomButton";
-import { LetterSwapPingPong } from "@/components/letter-swap";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { TextAnimate } from "../../components/TextAnimate";
+"use client"
+
+import { motion, useScroll, useTransform } from "framer-motion"
+import Image from "next/image"
+import { useRef } from "react"
 
 const Hero = () => {
+    const containerRef = useRef(null)
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"],
+    })
+
+    const yTransform = useTransform(scrollYProgress, [0, 0.4, 1], [0, 200, 150])
+    const xTransform = useTransform(scrollYProgress, [0, 0.5, 0.8, 0.9, 1], [0, -200, -800, -1200, -2000])
+    const rotate = useTransform(scrollYProgress, [0, 0.4, 1], [0, -50, -90])
+    const scale = useTransform(scrollYProgress, [0, 0.3, 1], [.85, 1.2, 1.5])
+    const opacity1 = useTransform(scrollYProgress, [0, 0.2, 0.3, 1], [1, 1, 0, 0])
+    const opacity2 = useTransform(scrollYProgress, [0.3, 0.4, 0.5, 0.7], [0, 0, 1, 0])
+    const opacity3 = useTransform(scrollYProgress, [0.6, 0.7, 0.9, 1], [0, 0, 1, 1])
+
     return (
-        <section className="h-screen w-full md:overflow-hidden relative">
-            <div className="w-full h-full flex  flex-col justify-center">
+        <div ref={containerRef} className="relative h-[300vh]">
+            {/* Floating Cell */}
 
-                {/* image with framer motion animation */}
-                <div className="flex items-center justify-center p-4 w-full pt-[10%] lg:pt-10 overflow-hidden">
-                    <motion.div
-                        animate={{
-                            y: [0, -15, 0, 15, 0],
-                            scale: [1, 1.1, 1.1, 1.02, 1]
-                        }}
-                        transition={{
-                            duration: 8,
-                            ease: "easeInOut",
-                            repeat: Infinity,
-                            repeatType: "loop"
-                        }}
-                    >
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{
-                                duration: 30,
-                                ease: "linear",
-                                repeat: Infinity
-                            }}
-                        >
-                            <Image
-                                src={'/pipeline/cell.svg'}
-                                alt="cell"
-                                width={350}
-                                height={350}
-                                objectFit="contain"
-                                className="w-full  xs:max-w-xs sm:max-w-[10%] md:max-w-md lg:max-w-lg xl:max-w-sm 2xl:max-w-lg z-0"
-                            />
-                        </motion.div>
-                    </motion.div>
-                </div>
 
-                {/* content */}
-                <div className="flex flex-col xl:flex-row xl:justiify-between xl:gap-20 mx-auto w-full max-w-6xl z-10">
-                    <div className="flex flex-col justify-center items-center xl:items-start text-center xl:text-start w-full gap-2">
-                        <TextAnimate type="shiftInUp">
-                            <p className="text-xl 2xl:text-2xl z-10">Pipeline</p>
-                        </TextAnimate>
-                        <TextAnimate type="shiftInUp">
-                            <h1 className="font-normal text-3xl md:text-4xl lg:text-6xl xl:text-4xl 2xl:text-6xl max-w-xs lg:max-w-lg xl:max-w-sm 2xl:max-w-sm z-10"> Reigniting the Beauty of Cell Science</h1>
-                        </TextAnimate>
-                    </div>
-                    <TextAnimate type="swingDrop">
-                        <div className="w-full flex flex-col gap-4 justify-center items-center mx-auto">
-                            <p className="font-normal text-lg md:text-xl lg:text-xl 2xl:text-2xl text-center lg:text-left max-w-60 md:max-w-md xl:max-w-md z-10">
-                                Harnessing the power of biology, our technologies amplify your body&apos;s potential like never before.
-                            </p>
-                            
-                                <div className="w-full xl:max-w-md flex justify-center xl:justify-start">
-                                    <CustomButton className="font-normal tracking-wide text-sm md:text-base">
-                                        <LetterSwapPingPong
-                                            label="KNOW MORE"
-                                            staggerFrom="first"
-                                            reverse={true}
-                                            className="font-medium"
-                                        />
-                                    </CustomButton>
-                                </div>
-                           
-                        </div>
-                    </TextAnimate>
-                </div>
-            </div>
-        </section>
-    );
+            {/* Section 1 */}
+            <section className="h-screen max-w-6xl mx-auto w-full flex items-center justify-center px-4">
+                <motion.div
+                    className="fixed top-1/4 lg:top-[4%] left-[37%] 2xl:left-[40%] pointer-events-none -z-10"
+                    style={{
+                        x: xTransform,
+                        y: yTransform,
+                        rotate,
+                        scale,
+                    }}
+                >
+                    <Image
+                        src="/pipeline/cell.svg"
+                        alt="cell"
+                        width={0}
+                        height={0}
+                        sizes="(max-width: 640px) 150px, (max-width: 768px) 200px, (max-width: 1024px) 300px, 350px"
+                        className="object-contain w-[150px] sm:w-[200px] md:w-[300px] lg:w-[350px] xl:max-w-sm h-auto"
+                    />
+                </motion.div>
+
+
+
+                <motion.h1
+                    style={{ opacity: opacity1 }}
+                    className="text-center text-2xl sm:text-4xl md:text-3xl xl:text-3xl 2xl:text-5xl font-normal max-w-md xl:max-w-xl 2xl:max-w-3xl md:mt-36 lg:mt-24 xl:mt-20 "
+                >
+                    You are special, possess a unique biology, your cells are wise and knows how to heal and grow.
+                </motion.h1>
+            </section>
+
+            {/* Section 2 */}
+            <section className="h-screen max-w-6xl mx-auto w-full flex items-center px-4">
+                <motion.div style={{ opacity: opacity2 }} className="w-full md:w-1/2 ml-auto text-center md:text-left">
+                    <h2 className="text-center text-2xl sm:text-4xl md:text-3xl xl:text-3xl 2xl:text-5xl font-normal max-w-md xl:max-w-xl 2xl:max-w-3xl md:pl-16 mx-auto">
+                        We believe with the right touch, we can rekindle the beauty of cell science to heal and restore the harmony.
+                    </h2>
+                </motion.div>
+            </section>
+
+            {/* Section 3 */}
+            <section className="h-screen max-w-6xl mx-auto w-full flex justify-center items-center px-4 text-center">
+                <motion.h2
+                    style={{ opacity: opacity3 }}
+                    className="text-center text-2xl sm:text-4xl md:text-3xl xl:text-3xl 2xl:text-5xl font-normal max-w-md xl:max-w-xl 2xl:max-w-3xl"
+                >
+                    Enhancing the natural processes & the substrate of the body, our technologies use the best that biology can offer for you.
+                </motion.h2>
+            </section>
+        </div>
+    )
 }
 
-export default Hero;
+export default Hero

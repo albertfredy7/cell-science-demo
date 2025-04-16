@@ -22,10 +22,9 @@ const Homeostasis = () => {
     ]
 
     return (
-        <section className="max-w-6xl mx-auto p-6 md:p-8 relative">
-            <div className="bg-gray-100 mb-10 flex items-center p-4">
-                <span className="text-7xl font-normal mr-6">1</span>
-                <h2 className="text-2xl md:text-3xl font-light">
+        <section className="max-w-6xl mx-auto  flex flex-col justify-center p-6 md:p-8 py-8 relative">
+            <div className="mb-10 flex items-center p-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-normal max-w-3xl">
                     Disrupted homeostasis in ovarian micro-environment
                 </h2>
             </div>

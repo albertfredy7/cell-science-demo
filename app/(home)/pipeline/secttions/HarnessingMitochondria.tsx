@@ -7,9 +7,9 @@ interface NumberedItemProps {
 }
 
 const NumberedItem = ({ number, children }: NumberedItemProps) => (
-    <div className="flex items-start mb-6 sm:mb-8">
+    <div className="flex items-start mb-6 sm:mb-8 max-w-sm mx-auto">
         <span className="text-4xl sm:text-5xl font-normal mr-4 flex-shrink-0">{number}</span>
-        <div className="border-b border-gray-300 pb-4 w-full">
+        <div className="border-b border-gray-300 pb-4 w-full  ">
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl">{children}</p>
         </div>
     </div>
@@ -24,22 +24,31 @@ const ITEMS = [
 ];
 
 const HarnessingMitochondria = () => (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8">
-        <header className="bg-gray-200 mb-6 sm:mb-8 flex items-center p-3 sm:p-4">
-            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mr-4 sm:mr-6">3</span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-normal">Harnessing the Power of Mitochondria</h2>
+    <section className=" flex flex-col justify-center max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-10">
+        <header className=" mb-6 sm:mb-8 flex items-center ">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-normal max-w-3xl">Harnessing the Power of Mitochondria</h2>
         </header>
 
-        <div className="space-y-4 sm:space-y-6  font-light">
+        <div className="space-y-2 font-light">
             <h3 className="text-lg sm:text-xl md:text-2xl">
-                The Driver of Ovarian Aging & The Interconnecting Hub of All Hallmarks
-            </h3>
+                Mitochondria - The Driver of Ovarian Aging &  Interconnecting Hub of All Hallmarks</h3>
 
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8">
-                Our approach focuses on evidence-based prospective molecules (COQ10) to:
+                Our approach focus on evidence-based prospective molecules (COQ10) to:
             </p>
 
-            <div className="flex flex-col md:flex-row gap-6 md:gap-10">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 pt-8">
+                <div className="md:w-2/5 flex items-center justify-center">
+                    <Image
+                        src="/mitochondria.png"
+                        alt="Cell illustration showing mitochondrial function"
+                        width={300}
+                        height={300}
+                        className="w-full max-w-xs"
+                        priority
+                    />
+                </div>
+
                 <div className="md:w-3/5">
                     {ITEMS.map(({ number, text }) => (
                         <NumberedItem key={number} number={number}>
@@ -48,16 +57,7 @@ const HarnessingMitochondria = () => (
                     ))}
                 </div>
 
-                <div className="md:w-2/5 flex items-center justify-center">
-                    <Image
-                        src="/pipeline/cell.svg"
-                        alt="Cell illustration showing mitochondrial function"
-                        width={300}
-                        height={300}
-                        className="w-full max-w-xs"
-                        priority
-                    />
-                </div>
+
             </div>
         </div>
     </section>
