@@ -23,8 +23,8 @@ interface SectionProps {
 
 // Reusable components
 const SectionHeader: React.FC<Header> = ({ title, description }) => (
-    <div>
-        <TextAnimate type='shiftInUp'><h1 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-normal mb-6">{title}</h1></TextAnimate>
+    <div className='space-y-4'>
+        <TextAnimate type='shiftInUp'><h1 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-normal ">{title}</h1></TextAnimate>
         <TextAnimate type='shiftInUp'>
             <p className="text-base md:text-lg lg:text-xl max-w-xl md:max-w-2xl leading-relaxed font-light">
                 {description}
@@ -32,18 +32,19 @@ const SectionHeader: React.FC<Header> = ({ title, description }) => (
         </TextAnimate>
     </div>
 );
-
 const TopicItem: React.FC<Topic> = ({ icon, title, colorClass }) => (
-    <div className="flex items-center">
+    <div className="flex flex-row gap-4 items-center">
         <TextAnimate type='shiftInUp'>
-            <div className={`${colorClass} rounded-full w-16 h-16 flex items-center justify-center`}>
-                <Image src={icon} alt={title}  width={500} height={500} className='w-16 h-16' quality={100} />
+            <div className='flex justify-center'>
+                <div className={`${colorClass} rounded-full w-16 h-16 flex items-center justify-center`}>
+                    <Image src={icon} alt={title} width={500} height={500} className='w-16 h-16 object-contain' quality={100} />
+                </div>
             </div>
         </TextAnimate>
-        <div className="ml-4">
-           <TextAnimate type='whipInUp'>
+        <div className="">
+            <TextAnimate type='whipInUp'>
                 <h3 className="font-normal text-lg leading-normal">{title}</h3>
-                <a href="#" className="text-sm flex items-center">
+                <a href="#" className="text-sm flex items-center ">
                     Learn more
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -58,13 +59,13 @@ const TopicItem: React.FC<Topic> = ({ icon, title, colorClass }) => (
                         />
                     </svg>
                 </a>
-           </TextAnimate>
+            </TextAnimate>
         </div>
     </div>
 );
 
 const Section: React.FC<SectionProps> = ({ bgClass, header, topics }) => (
-    <div className={`sticky top-20 md:top-0 lg:top-0 h-lvh overflow-hidden flex pt-4 md:pt-0   ${bgClass}`}>
+    <div className={`sticky top-16 md:top-0 lg:top-0 h-lvh overflow-hidden flex pt-4 md:pt-0 py-16   ${bgClass}`}>
         <div className="container mx-auto px-4 md:px-6 md:py-0 flex flex-col md:flex-row items-center md:justify-around">
             <SectionHeader title={header.title} description={header.description} />
             <div className="mt-4 md:mt-0 space-y-6 md:ml-8">
