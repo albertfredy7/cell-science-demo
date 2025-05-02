@@ -1,121 +1,99 @@
 "use client";
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import GradientText from "../../components/GradientText";
 
 interface ImageCanvasProps {
-    scrollHeight?: number;
     videoSrc: string;
     videoDuration?: number;
-    onVideoEnd?: () => void; // Callback when video ends
+    scrollHeight?: number;
 }
 
 export default function ImageCanvas({
-    scrollHeight = 6000,
     videoSrc,
-    videoDuration = 14,
-    onVideoEnd,
+    videoDuration = 15,
+    scrollHeight = 4000,
 }: ImageCanvasProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const [viewportHeight, setViewportHeight] = useState(0);
-    const [isVideoEnded, setIsVideoEnded] = useState(false);
 
-    // Set viewport height for accurate scroll calculations
-    useEffect(() => {
-        setViewportHeight(window.innerHeight);
-        const handleResize = () => setViewportHeight(window.innerHeight);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // Scroll tracking
+    // Track scroll position
     const { scrollY } = useScroll();
 
-    // Map scroll progress to video time (0 to 14 seconds)
-    const rawVideoTime = useTransform(
-        scrollY,
-        [0, scrollHeight - viewportHeight],
-        [0, videoDuration]
+    // Map scroll position to video time (0 to 15 seconds)
+    const videoTime = useSpring(
+        useTransform(scrollY, [0, scrollHeight], [0, videoDuration]),
+        { stiffness: 100, damping: 30 }
     );
-    const videoTime = useSpring(rawVideoTime, {
-        stiffness: 50,
-        damping: 20,
-        restDelta: 0.001,
-    });
 
-    // Fade-in at the start (first 1 second of video time)
-    // Fade-out at the end (last 0.3 seconds of video time)
-    const opacity = useTransform(
+    // Video opacity: Fade in over first second, fade out over last 0.5 seconds
+    const videoOpacity = useTransform(
         videoTime,
-        [0, 1, videoDuration - 0.3, videoDuration],
-        [0, 1, 1, 0] // Fade in from 0 to 1, then fade out from 1 to 0
+        [0, 1, videoDuration - 0.5, videoDuration],
+        [0, 1, 1, 0]
     );
 
-    // Height reduction from 100vh to 0vh between scrollY 5500 to 6000
-    const height = useTransform(
-        scrollY,
-        [5800, 6000],
-        ['100vh', '0vh'],
-        { clamp: true }
+    // Text opacity: Fade in as video fades out (last 0.5 seconds)
+    const textOpacity = useTransform(
+        videoTime,
+        [videoDuration - 0.5, videoDuration],
+        [0, 1]
     );
 
-    // Update video time and detect end
+    // Text y-position: Slide up from bottom (100vh to 0) as video fades out
+    const textY = useTransform(
+        videoTime,
+        [videoDuration - 0.5, videoDuration],
+        ["100vh", "0vh"]
+    );
+
+    // Update video frame based on scroll
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
 
-        video.pause();
-        video.loop = false;
         video.muted = true;
+        video.loop = false;
         video.playbackRate = 1;
 
-        let lastUpdate = 0;
-        let lastTime = -1;
-        const updateVideoTime = () => {
-            const now = performance.now();
-            if (now - lastUpdate < 16) return;
-
-            const currentTime = videoTime.get();
-            if (Math.abs(currentTime - lastTime) > 0.02) {
-                video.currentTime = Math.max(0, Math.min(videoDuration, currentTime));
-                lastTime = currentTime;
-                lastUpdate = now;
-
-                // Check if video has reached the end
-                if (currentTime >= videoDuration - 0.1 && !isVideoEnded) {
-                    setIsVideoEnded(true);
-                    if (onVideoEnd) onVideoEnd();
-                }
-            }
+        const updateFrame = () => {
+            const time = videoTime.get();
+            video.currentTime = Math.max(0, Math.min(videoDuration, time));
         };
 
-        const handleMetadataLoaded = () => {
-            updateVideoTime();
-        };
-        video.addEventListener('loadedmetadata', handleMetadataLoaded);
-
-        const unsubscribe = videoTime.on('change', () => {
-            requestAnimationFrame(updateVideoTime);
+        const unsubscribe = videoTime.on("change", () => {
+            requestAnimationFrame(updateFrame);
         });
 
         return () => {
-            video.removeEventListener('loadedmetadata', handleMetadataLoaded);
             unsubscribe();
         };
-    }, [videoTime, videoDuration, onVideoEnd, isVideoEnded]);
+    }, [videoTime, videoDuration]);
 
     return (
-        <>
-            <div style={{ height: `${scrollHeight}px` }}>
-                <motion.video
-                    ref={videoRef}
-                    src={videoSrc}
-                    className="sticky top-0 w-full h-screen object-cover"
-                    preload="auto"
-                    style={{ opacity, height }} // Bind opacity and height
-                />
+        <div style={{ height: `${scrollHeight}px`, position: "relative" }}>
+            {/* Video */}
+            <motion.video
+                ref={videoRef}
+                src={videoSrc}
+                className="sticky top-0 w-full h-screen object-cover"
+                preload="auto"
+                style={{ opacity: videoOpacity }}
+            />
 
-            </div>
-           
-        </>
+            {/* Text section, fades in and slides up from bottom */}
+            <motion.section
+                className="sticky top-20 min-h-screen flex justify-center items-center py-16 "
+                style={{ opacity: textOpacity, y: textY }}
+            >
+                <div className="max-w-5xl px-6">
+                    <div className=" text-center text-white text-3xl md:text-4xl lg:text-4xl font-light">
+                        Cellscience Biotech targets the very first organs that age in humans — the female reproductive organs. We are shifting the perspective of ovarian biology; <GradientText>it&apos;s not just the egg, the ovary — Nest, and the homeostasis in the ovarian microenvironment changes with age.</GradientText>
+                    </div>
+                    <div className="text-center text-white text-3xl md:text-4xl lg:text-4xl font-light mt-6">
+                        Targeting these newly identified hallmarks can enhance the quality of follicles by restoring the freshness of youth in the reproductive tissues.
+                    </div>
+                </div>
+            </motion.section>
+        </div>
     );
 }

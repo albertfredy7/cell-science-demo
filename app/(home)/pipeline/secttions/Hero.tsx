@@ -23,31 +23,27 @@ const Hero = () => {
     return (
         <div ref={containerRef} className="relative h-[300vh]">
             {/* Floating Cell */}
-
+            <motion.div
+                className="fixed top-[20%] sm:top-[25%] md:top-[10%] lg:top-[0%] xl: left-1/4 md:left-[28%] xl:left-[36%] transform -translate-x-1/2 pointer-events-none -z-10 max-w-[50%] sm:max-w-sm md:max-w-md lg:max-w-md xl:max-w-lg 2xl:max-w-lg"
+                style={{
+                    x: xTransform,
+                    y: yTransform,
+                    rotate,
+                    scale,
+                }}
+            >
+                <Image
+                    src="/pipeline/cell.svg"
+                    alt="cell"
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 375px) 100px, (max-width: 640px) 150px, (max-width: 768px) 200px, (max-width: 1024px) 300px, 450px"
+                    className="object-contain w-full h-auto"
+                />
+            </motion.div>
 
             {/* Section 1 */}
             <section className="h-screen max-w-6xl mx-auto w-full flex items-center justify-center px-4">
-                <motion.div
-                    className="fixed top-1/4 lg:top-[4%] left-[37%] 2xl:left-[40%] pointer-events-none -z-10"
-                    style={{
-                        x: xTransform,
-                        y: yTransform,
-                        rotate,
-                        scale,
-                    }}
-                >
-                    <Image
-                        src="/pipeline/cell.svg"
-                        alt="cell"
-                        width={0}
-                        height={0}
-                        sizes="(max-width: 640px) 150px, (max-width: 768px) 200px, (max-width: 1024px) 300px, 350px"
-                        className="object-contain w-[150px] sm:w-[200px] md:w-[300px] lg:w-[350px] xl:max-w-sm h-auto"
-                    />
-                </motion.div>
-
-
-
                 <motion.h1
                     style={{ opacity: opacity1 }}
                     className="text-center text-2xl sm:text-4xl md:text-3xl xl:text-3xl 2xl:text-5xl font-normal max-w-md xl:max-w-xl 2xl:max-w-3xl md:mt-36 lg:mt-24 xl:mt-20 "
