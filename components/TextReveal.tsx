@@ -1,4 +1,5 @@
 'use client'
+
 import GradientText from '@/app/(home)/components/GradientText'
 import { cn } from '@/lib/utils'
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion'
@@ -8,9 +9,15 @@ interface TextRevealProps {
     children: ReactNode
     className?: string
     specialWords?: string[]
+    theme?: 'light' | 'dark' // 👈 theme prop added
 }
 
-export const TextReveal: FC<TextRevealProps> = ({ children, className, specialWords = [] }) => {
+export const TextReveal: FC<TextRevealProps> = ({
+    children,
+    className,
+    specialWords = [],
+    theme = 'dark', // 👈 default is dark
+}) => {
     const containerRef = useRef<HTMLDivElement | null>(null)
 
     const { scrollYProgress } = useScroll({
@@ -32,6 +39,7 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className, specialWo
                         index={pIndex}
                         total={paragraphs.length}
                         specialWords={specialWords}
+                        theme={theme} // 👈 pass theme down
                         className={className}
                     />
                 ))}
@@ -47,6 +55,7 @@ interface ParagraphRevealProps {
     total: number
     specialWords?: string[]
     className?: string
+    theme?: 'light' | 'dark'
 }
 
 const ParagraphReveal: FC<ParagraphRevealProps> = ({
@@ -54,21 +63,25 @@ const ParagraphReveal: FC<ParagraphRevealProps> = ({
     progress,
     specialWords = [],
     className,
+    theme = 'dark',
 }) => {
-    const paragraphProgress = useTransform(progress, [0.3, 0.5], [0, 1])
+    const paragraphProgress = useTransform(progress, [0.3, 0.6], [0, 1])
     const words = paragraph.split(' ')
 
+    const baseColor = theme === 'light' ? 'text-black/10' : 'text-white/10'
+    const revealColor = theme === 'light' ? 'text-black' : 'text-white'
+
     return (
-        <div className={cn('relative mb-6 leading-relaxed', className)}>
+        <div className={cn('relative mb-6 leading-normal', className)}>
             {/* Base faded layer */}
-            <div className="absolute inset-0 text-white/10">
+            <div className={cn('absolute inset-0', baseColor)}>
                 {words.map((word, i) => (
-                    <span key={i} className="inline-block mx-1">{word}{' '}</span>
+                    <span key={i} className="inline-block mx-2">{word}{' '}</span>
                 ))}
             </div>
 
             {/* Revealing animation */}
-            <div className="relative text-2xl  text-white">
+            <div className={cn('relative text-2xl', revealColor)}>
                 {words.map((word, i) => {
                     const wordStart = i / words.length
                     const wordEnd = (i + 1) / words.length
@@ -76,7 +89,8 @@ const ParagraphReveal: FC<ParagraphRevealProps> = ({
                     return (
                         <RevealWord
                             key={i}
-                            {...{ progress: paragraphProgress, range: [wordStart, wordEnd] }}
+                            progress={paragraphProgress}
+                            range={[wordStart, wordEnd]}
                             isSpecialWord={specialWords.includes(word.replace(/[.,!?]/g, '').toLowerCase())}
                             className={className}
                         >
@@ -109,10 +123,10 @@ const RevealWord: FC<RevealWordProps> = ({
     return (
         <motion.span
             style={{ opacity }}
-            className={cn('inline-block mx-1 transition-opacity', className)}
+            className={cn('inline-block mx-2 transition-opacity', className)}
         >
             {isSpecialWord ? (
-                <GradientText className='font-light'>{children}</GradientText>
+                <GradientText className="font-light">{children}</GradientText>
             ) : (
                 <span>{children}{' '}</span>
             )}

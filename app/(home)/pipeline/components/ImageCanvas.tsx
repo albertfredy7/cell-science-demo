@@ -7,12 +7,14 @@ interface ImageCanvasProps {
     videoSrc: string;
     videoDuration?: number;
     scrollHeight?: number;
+    type?: string;
 }
 
 export default function ImageCanvas({
     videoSrc,
     videoDuration = 15,
     scrollHeight = 4000,
+    type,
 }: ImageCanvasProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -75,13 +77,27 @@ export default function ImageCanvas({
             <motion.video
                 ref={videoRef}
                 src={videoSrc}
-                className="sticky top-0 w-full h-screen object-cover"
+                className="sticky top-0 w-full h-screen object-cover  "
                 preload="auto"
                 style={{ opacity: videoOpacity }}
             />
 
             {/* Text section, fades in and slides up from bottom */}
-            <motion.section
+
+            {/* if type = science  then this */}
+            {type === "science" ? (
+               <motion.section
+                    className="sticky top-20 min-h-screen flex justify-center items-center py-16 "
+                    style={{ opacity: textOpacity, y: textY }}>
+                    <div className="max-w-5xl px-6">
+                        <div className="  text-white text-center text-3xl md:text-4xl lg:text-4xl font-light">
+                            <p className="font-light"> The analogy of mitochondria as powerhouses has expired. Mitochondria are living, dynamic, maternally inherited, energy transforming, biosynthetic, and signaling organelles that actively transduce biological information. We argue that mitochondria are the professor of the cell.</p>
+                        </div>
+
+                    </div>
+                </motion.section>
+            )
+            : (<motion.section
                 className="sticky top-20 min-h-screen flex justify-center items-center py-16 "
                 style={{ opacity: textOpacity, y: textY }}
             >
@@ -93,7 +109,11 @@ export default function ImageCanvas({
                         Targeting these newly identified hallmarks can enhance the quality of follicles by restoring the freshness of youth in the reproductive tissues.
                     </div>
                 </div>
-            </motion.section>
+            </motion.section>)}
+            {/* Text section */}
+            
+           
+            
         </div>
     );
 }
