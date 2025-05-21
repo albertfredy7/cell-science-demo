@@ -10,6 +10,7 @@ const About = () => {
                 >At Cellscience Biotech, we use integrated biology to restore the mitochondrial cellular energy metabolism. We are discovering mito nutrients within the cell to leverage corner stone of evolution of life : mitochondrial metabolism</TextReveal>
             </div>
         </section>
+        // about
     );
 }
 
