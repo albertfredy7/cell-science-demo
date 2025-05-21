@@ -15,7 +15,7 @@ const Testimonial = () => {
                     <div className="flex items-center">
                         <div className="mr-4 flex-shrink-0 rounded-full bg-red-100">
                             <Image
-                                src="/placeholder.svg?height=80&width=80"
+                                src="/science/soni.png"
                                 alt="Dr. Soni Deshwal"
                                 width={80}
                                 height={80}
