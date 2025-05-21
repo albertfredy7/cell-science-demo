@@ -2,9 +2,20 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
     images: {
-        domains: ['cell-science.zubble.co', 'secure.gravatar.com'], // Add the hostname here
+        remotePatterns: [
+            {
+              hostname: 'cell-science.zubble.co',
+              protocol: 'https',
+              port: '',
+            },
+            {
+                hostname: 'secure.gravatar.com',
+                protocol: 'https',
+                port: '',
+            },
+        ]
     },
-    /* other config options here */
+
 };
 
 export default nextConfig;

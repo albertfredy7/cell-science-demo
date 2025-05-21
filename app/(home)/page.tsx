@@ -6,7 +6,6 @@ import About3 from './sections/About3';
 import About4 from './sections/About4';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
-import Hallmarks from './sections/Hallmarks';
 import Hero from './sections/Hero';
 import Mitochondria from './sections/Mitochondria';
 import Pipeline from './sections/Pipeline';
@@ -19,7 +18,7 @@ export default function Home() {
         <ReactLenis
             root
             options={{
-                duration: 3,
+                duration: 2,
                 infinite: false,
             }}
             
@@ -32,7 +31,7 @@ export default function Home() {
                 <About4 />
                 <Mitochondria />
                 <ScienceExplore />
-                <Hallmarks />
+                {/* <Hallmarks /> */}
                 <Pipeline />
                 <Team />
                 <Contact />

@@ -4,7 +4,7 @@ import GradientText from "../../components/GradientText";
 
 const ScrollVelocityChild = () => {
     return (
-        <div className="w-full  py-10 ">
+        <div className="w-full  py-6 ">
 
             <VelocityScroll
                 default_velocity={3}
