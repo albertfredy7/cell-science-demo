@@ -18,6 +18,8 @@ interface ScrollyVideoOptions {
     sticky?: boolean;
     trackScroll?: boolean;
     lockScroll?: boolean;
+    debug?: boolean; // optional: logs more info internally
+    onChange?: (percentage: number) => void; // callback for scroll progress
 }
 
 interface WindowWithScrollyVideo extends Window {
@@ -40,6 +42,7 @@ export default function ScrollyVideo({ src, children }: ScrollyVideoProps) {
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js';
+
         script.onload = () => {
             const win = window as WindowWithScrollyVideo;
             if (win.ScrollyVideo && containerRef.current) {
@@ -50,6 +53,10 @@ export default function ScrollyVideo({ src, children }: ScrollyVideoProps) {
                     cover: true,
                     full: true,
                     trackScroll: true,
+                    debug: true, // optional: logs more info internally
+                    onChange: (percentage: number) => {
+                        console.log('📽️ Video Scroll Progress:', percentage);
+                    },
                 });
 
                 setTimeout(() => {
@@ -68,13 +75,15 @@ export default function ScrollyVideo({ src, children }: ScrollyVideoProps) {
                 }, 500);
             }
         };
-        script.onerror = () => console.error('Failed to load ScrollyVideo script');
+
+        script.onerror = () => console.error('❌ Failed to load ScrollyVideo script');
         document.body.appendChild(script);
 
         return () => {
             document.body.removeChild(script);
         };
     }, [src]);
+    
 
     return (
         <div ref={wrapperRef} style={{ height: '500vh' }}>

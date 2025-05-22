@@ -22,7 +22,7 @@ export default function Page() {
             <ReactLenis
                 root
                 options={{
-                    duration: 3,
+                    duration: 2,
                     infinite: false,
                 }}
             >

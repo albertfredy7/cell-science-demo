@@ -5,7 +5,7 @@ const VideoSection = () => {
     return (
         <section className="bg-black relative">
             <div className="hidden md:block">
-                <ScrollyVideo src="/science/optimized-video.webm">
+                <ScrollyVideo src="/science/pipeline.webm">
                     <div className="w-full">
                         <blockquote className="border-l-4 border-white pl-4 md:pl-6 font-light">
                             <QuoteIcon size={36} color="#fafafa" />

@@ -15,7 +15,7 @@ const Hero = () => {
     const yTransform = useTransform(scrollYProgress, [0, 0.4, 1], [0, 200, 150])
     const xTransform = useTransform(scrollYProgress, [0, 0.5, 0.8, 0.9, 1], [0, -200, -800, -1200, -2000])
     const rotate = useTransform(scrollYProgress, [0, 0.4, 1], [0, -50, -90])
-    const scale = useTransform(scrollYProgress, [0, 0.3, 1], [.85, 1.2, 1.5])
+    const scale = useTransform(scrollYProgress, [0, 0.3, 1], [0.85, 1.2, 1.5])
     const opacity1 = useTransform(scrollYProgress, [0, 0.2, 0.3, 1], [1, 1, 0, 0])
     const opacity2 = useTransform(scrollYProgress, [0.3, 0.4, 0.5, 0.7], [0, 0, 1, 0])
     const opacity3 = useTransform(scrollYProgress, [0.6, 0.7, 0.9, 1], [0, 0, 1, 1])
@@ -24,7 +24,7 @@ const Hero = () => {
         <div ref={containerRef} className="relative h-[300vh]">
             {/* Floating Cell */}
             <motion.div
-                className="fixed top-[20%] sm:top-[25%] md:top-[10%] lg:top-[0%] xl: left-1/4 md:left-[28%] xl:left-[36%] transform -translate-x-1/2 pointer-events-none -z-10 max-w-[50%] sm:max-w-sm md:max-w-md lg:max-w-md xl:max-w-lg 2xl:max-w-lg"
+                className="fixed top-[20%] sm:top-[25%] md:top-[10%] lg:top-[0%] xl: left-1/4 md:left-[28%] xl:left-[36%] transform -translate-x-1/2 pointer-events-none -z-10 max-w-[50%] sm:max-w-sm md:max-w-md lg:max-w-md xl:max-w-lg 2xl:max-w-md object-contain"
                 style={{
                     x: xTransform,
                     y: yTransform,
@@ -38,23 +38,32 @@ const Hero = () => {
                     width={0}
                     height={0}
                     sizes="(max-width: 375px) 100px, (max-width: 640px) 150px, (max-width: 768px) 200px, (max-width: 1024px) 300px, 450px"
-                    className="object-contain w-full h-auto"
+                    className="object-contain w-full h-auto "
                 />
             </motion.div>
 
             {/* Section 1 */}
-            <section className="h-screen max-w-6xl mx-auto w-full flex items-center justify-center px-4">
-                <motion.h1
+            <section className="h-screen w-full max-w-6xl mx-auto flex flex-col">
+                {/* Top 50vh: Just spacing for image */}
+                <div className="h-[50vh] w-full" />
+
+                {/* Bottom 50vh: Text content */}
+                <motion.div
                     style={{ opacity: opacity1 }}
-                    className="text-center text-2xl sm:text-4xl md:text-3xl xl:text-3xl 2xl:text-5xl font-normal max-w-md xl:max-w-xl 2xl:max-w-3xl md:mt-36 lg:mt-24 xl:mt-20 "
+                    className="h-[50vh] w-full flex items-start justify-center px-4"
                 >
-                    You are special, possess a unique biology, your cells are wise and knows how to heal and grow.
-                </motion.h1>
+                    <h1 className="text-center text-2xl sm:text-4xl md:text-3xl xl:text-3xl 2xl:text-5xl font-normal max-w-md xl:max-w-xl 2xl:max-w-3xl">
+                        You are special, possess a unique biology, your cells are wise and knows how to heal and grow.
+                    </h1>
+                </motion.div>
             </section>
 
             {/* Section 2 */}
             <section className="h-screen max-w-6xl mx-auto w-full flex items-center px-4">
-                <motion.div style={{ opacity: opacity2 }} className="w-full md:w-1/2 ml-auto text-center md:text-left">
+                <motion.div
+                    style={{ opacity: opacity2 }}
+                    className="w-full md:w-1/2 ml-auto text-center md:text-left"
+                >
                     <h2 className="text-center text-2xl sm:text-4xl md:text-3xl xl:text-3xl 2xl:text-5xl font-normal max-w-md xl:max-w-xl 2xl:max-w-3xl md:pl-16 mx-auto">
                         We believe with the right touch, we can rekindle the beauty of cell science to heal and restore the harmony.
                     </h2>
