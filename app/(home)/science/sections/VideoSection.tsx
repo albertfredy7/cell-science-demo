@@ -28,7 +28,7 @@ const VideoSection = () => {
                     <div className="w-full">
                         <blockquote className="border-l-4 border-white pl-4 md:pl-6 font-light">
                             <QuoteIcon size={36} color="#fafafa" />
-                            <p className="text-4xl text-white">
+                            <p className="text-3xl text-white">
                                 &quot;Mitochondria are so small that one billion of them would fit comfortably in a grain of sand. The
                                 evolution of mitochondria fitted life with a turbo charged engine, revved up and ready for use at any
                                 time&quot;.

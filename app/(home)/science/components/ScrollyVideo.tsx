@@ -53,7 +53,7 @@ export default function ScrollyVideo({ src, children }: ScrollyVideoProps) {
                     cover: true,
                     full: true,
                     trackScroll: true,
-                    debug: true, // optional: logs more info internally
+                    // debug: true, // optional: logs more info internally
                     // onChange: (percentage: number) => {
                     //     console.log('📽️ Video Scroll Progress:', percentage);
                     // },
